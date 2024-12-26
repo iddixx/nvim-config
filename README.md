@@ -1,0 +1,3 @@
+- i use colemak-dh btw so there is mappings for it
+- there is two package managers: packer & vim-plug
+- other things you can explore by yourself
