@@ -144,6 +144,7 @@ local colemak_mappings = {
     { modes = { "n", "x" },      lhs = "p",          rhs = "p" },
     { modes = { "n", "o", "x" }, lhs = "c",          rhs = "c" },
     { modes = { "n", "o", "x" }, lhs = "c",          rhs = "c" },
+    { modes = { "n", "o", "x" }, lhs = "cc",         rhs = "cc" },  -- cut fix, cutlass deletes with c, which is not comfotable for me
 
     -- fixes
     { modes = { "n", "o", "x" }, lhs = "ci",         rhs = "ci" },
