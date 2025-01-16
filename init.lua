@@ -25,31 +25,31 @@ require('packer').startup(function(use)
 
     use 'nvim-tree/nvim-tree.lua'  --file tree
 
-    use 'tribela/vim-transparent'  --transparent bg
+    --use 'tribela/vim-transparent'  --transparent bg(i want to use neovim without it fow now)
     use 'ThePrimeagen/vim-be-good' --funny game bruh
     use 'wakatime/vim-wakatime'    --time counter lol
     use 'svermeulen/vim-cutlass'   --makes d delete, not cut
     use 'ThePrimeagen/vim-be-good' -- fun game
 
     --use '00sapo/visual.nvim'       -- helix movements
-    use --debugger
-    { "rcarriga/nvim-dap-ui",
-        requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-        config = function()
-            local dap = require("dap")
-            local dapui = require("dapui")
-            dapui.setup()
-            dap.listeners.after.event_initialized["dapui_config"] = function()
-                dapui.open()
-            end
-            dap.listeners.before.event_terminated["dapui_config"] = function()
-                dapui.close()
-            end
-            dap.listeners.before.event_exited["dapui_config"] = function()
-                dapui.close()
-            end
-        end
-    }
+  --  use --debugger
+  --  { "rcarriga/nvim-dap-ui",
+  --      requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+  --      config = function()
+  --          local dap = require("dap")
+  --          local dapui = require("dapui")
+  --          dapui.setup()
+  --          dap.listeners.after.event_initialized["dapui_config"] = function()
+  --              dapui.open()
+  --          end
+  --          dap.listeners.before.event_terminated["dapui_config"] = function()
+  --              dapui.close()
+  --          end
+  --          dap.listeners.before.event_exited["dapui_config"] = function()
+  --              dapui.close()
+  --          end
+  --      end
+  --  }
     use {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
@@ -81,7 +81,6 @@ Plug 'owickstrom/vim-colors-paramount'
 Plug 'blazkowolf/gruber-darker.nvim'
 Plug 'shawilly/ponokai'
 Plug 'HealsCodes/vim-gas'
-Plug 'Mofiqul/vscode.nvim'
 Plug 'savq/melange-nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'jlcrochet/vim-cs'
@@ -291,24 +290,24 @@ for key, func in pairs(keymap) do
     vim.keymap.set(modes, key, func)
 end
 -- dap
-local dap = require('dap')
-dap.adapters.coreclr = {
-    type = 'executable',
-    command = 'C:\\netcoredbg',
-    args = { '--interpreter=vscode' }
-}
-
-dap.configurations.cs = {
-    {
-        type = "coreclr",
-        name = "launch - netcoredbg",
-        request = "launch",
-        program = function()
-            return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
-        end,
-    },
-}
-require("dapui").setup()
+--local dap = require('dap')
+--dap.adapters.coreclr = {
+--    type = 'executable',
+--    command = 'C:\\netcoredbg',
+--    args = { '--interpreter=vscode' }
+--}
+--
+--dap.configurations.cs = {
+--    {
+--        type = "coreclr",
+--        name = "launch - netcoredbg",
+--        request = "launch",
+--        program = function()
+--            return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+--        end,
+--    },
+--}
+--require("dapui").setup()
 --[[ Editor ]]
 vim.g.loaded_netrw       = 1
 vim.g.loaded_netrwPlugin = 1
@@ -361,39 +360,6 @@ vim.opt.guifont     = 'JetBrainsMonoNL Nerd Font Mono:h14' -- JetBrainsMonoNL_NF
 --})
 
 ---------   theme  ---------
-local c             = require('vscode.colors').get_colors()
-require('vscode').setup({
-    -- Alternatively set style in setup
-    -- style = 'light'
-
-    -- Enable transparent background
-    transparent = true,
-
-    -- Enable italic comment
-    italic_comments = true,
-
-    -- Underline `@markup.link.*` variants
-    underline_links = true,
-
-    -- Disable nvim-tree background color
-    disable_nvimtree_bg = true,
-
-    -- Override colors (see ./lua/vscode/rem_colors.lua)
-    color_overrides = {
-        vscLineNumber = '#FFFFFF',
-    },
-
-    -- Override highlight groups (see ./lua/vscode/theme.lua)
-    group_overrides = {
-        -- this supports the same val table as vim.api.nvim_set_hl
-        -- use colors from this colorscheme by requiring vscode.colors!
-        Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
-    }
-})
--- require('vscode').load()
-
--- load the theme without affecting devicon rem_colors.
-
 vim.g.ponokai_transparent_background = "1"
 vim.g.ponokai_enable_italic = "0"
 vim.g.ponokai_better_performance = "1"
@@ -491,7 +457,7 @@ local nf_theme = {
 require('lualine').setup {
     options = {
         icons_enabled = true,
-        theme = nf_theme,
+        theme = rem_theme,
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
@@ -531,17 +497,17 @@ require('lualine').setup {
 }
 
 --vim.cmd.colorscheme("lavender") -- use with ai bg
-vim.cmd.colorscheme("base16-stella") -- use with purple anime girl bg
+--vim.cmd.colorscheme("base16-stella") -- use with purple anime girl bg
 --vim.cmd.colorscheme("falcon") -- use with nullspaces
---vim.cmd.colorscheme("yuyuko") -- use with rem bg
+vim.cmd.colorscheme("yuyuko") -- use with rem bg
 
 vim.opt.termguicolors               = true
 -- vim.cmd.colorscheme("gruber-darker")
 -- vim transparent
-vim.g.transparent_groups            = { 'Normal', 'Comment', 'Constant', 'Special', 'Identifier',
-    'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String',
-    'Function', 'Conditional', 'Repeat', 'Operator', 'Structure',
-    'LineNr', 'NonText', 'SignColumn', 'CursorLineNr', 'EndOfBuffer', 'Pmenu' }
+--vim.g.transparent_groups            = { 'Normal', 'Comment', 'Constant', 'Special', 'Identifier',
+--    'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String',
+--    'Function', 'Conditional', 'Repeat', 'Operator', 'Structure',
+--    'LineNr', 'NonText', 'SignColumn', 'CursorLineNr', 'EndOfBuffer', 'Pmenu' }
 
 --omnisharp
 vim.g.OmniSharp_server_path         = 'C:\\Users\\ondar\\!language_servers\\Omnisharp\\OmniSharp.exe'
