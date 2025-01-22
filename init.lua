@@ -487,7 +487,6 @@ vim.opt.termguicolors = true
 vim.opt.background = "dark"
 
 vim.g.komau_italic = false
-vim.g.komau_bold = true
 
 --vim.cmd.colorscheme("lavender") -- use with ai bg
 --vim.cmd.colorscheme("base16-stella") -- use with purple anime girl bg
