@@ -74,10 +74,21 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["baleia.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\baleia.nvim",
+    url = "https://github.com/m00qek/baleia.nvim"
+  },
   ["coc.nvim"] = {
     loaded = true,
     path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\coc.nvim",
     url = "https://github.com/neoclide/coc.nvim"
+  },
+  ["compile-mode.nvim"] = {
+    config = { "\27LJ\2\nW\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\0\2\17baleia_setup\2\16buffer_name\16compilation\17compile_mode\6g\bvim\0" },
+    loaded = true,
+    path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\compile-mode.nvim",
+    url = "https://github.com/ej-shafran/compile-mode.nvim"
   },
   ["gitsigns.nvim"] = {
     loaded = true,
@@ -112,11 +123,6 @@ _G.packer_plugins = {
     path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-tree.lua",
     url = "https://github.com/nvim-tree/nvim-tree.lua"
   },
-  ["nvim-web-devicons"] = {
-    loaded = true,
-    path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-web-devicons",
-    url = "https://github.com/nvim-tree/nvim-web-devicons"
-  },
   ["omnisharp-vim"] = {
     loaded = true,
     path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\omnisharp-vim",
@@ -126,6 +132,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
+  },
+  ["plenary.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\plenary.nvim",
+    url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["smear-cursor.nvim"] = {
     loaded = true,
@@ -142,6 +153,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-cpp-enhanced-highlight",
     url = "https://github.com/octol/vim-cpp-enhanced-highlight"
   },
+  ["vim-cs"] = {
+    loaded = true,
+    path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-cs",
+    url = "https://github.com/jlcrochet/vim-cs"
+  },
   ["vim-cutlass"] = {
     loaded = true,
     path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-cutlass",
@@ -151,15 +167,14 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-floaterm",
     url = "https://github.com/voldikss/vim-floaterm"
-  },
-  ["vim-wakatime"] = {
-    loaded = true,
-    path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-wakatime",
-    url = "https://github.com/wakatime/vim-wakatime"
   }
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: compile-mode.nvim
+time([[Config for compile-mode.nvim]], true)
+try_loadstring("\27LJ\2\nW\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\0\2\17baleia_setup\2\16buffer_name\16compilation\17compile_mode\6g\bvim\0", "config", "compile-mode.nvim")
+time([[Config for compile-mode.nvim]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads

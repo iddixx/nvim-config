@@ -10,7 +10,9 @@ require('packer').startup(function(use)
     use { 'neoclide/coc.nvim', branch = 'release' }
     use 'OmniSharp/omnisharp-vim'
 
+    --syntax highlight
     use 'octol/vim-cpp-enhanced-highlight'
+    use 'jlcrochet/vim-cs'
 
     --statusline and buffer line--
     use
@@ -18,20 +20,34 @@ require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim',
     }
 
-    -- tab line --
-    use 'nvim-tree/nvim-web-devicons'
-    use 'lewis6991/gitsigns.nvim'
-    -- use 'romgrk/barbar.nvim'
-
     use 'nvim-tree/nvim-tree.lua'  --file tree
 
     --use 'tribela/vim-transparent'  --transparent bg(i want to use neovim without it fow now)
     use 'ThePrimeagen/vim-be-good' --funny game bruh
-    use 'wakatime/vim-wakatime'    --time counter lol
     use 'svermeulen/vim-cutlass'   --makes d delete, not cut
-    use 'ThePrimeagen/vim-be-good' -- fun game
 
-    --use '00sapo/visual.nvim'       -- helix movements
+    use
+    {
+        "ej-shafran/compile-mode.nvim",
+        tag = "v5.*",
+        branch = "nightly",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            {
+                "m00qek/baleia.nvim",
+                tag = "v1.3.0",
+            },
+        },
+        config = function()
+            ---@type CompileModeOpts
+            vim.g.compile_mode = {
+                buffer_name="compilation",
+                -- to add ANSI escape code support, add:
+                baleia_setup = true,
+            }
+        end,
+    }
+
   --  use --debugger
   --  { "rcarriga/nvim-dap-ui",
   --      requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
@@ -64,40 +80,17 @@ end)
 -- gui settings
 
 if vim.g.neovide then
-    vim.o.guifont = "JetBrainsMonoNL Nerd Font Mono:h14"
+    vim.o.guifont = "Iosevka Fixed SS15:h20"
 end
 
--- vim-plug
+-- vim-plug (i use it only for themes lmao)
 local Plug = vim.fn['plug#']
 vim.call('plug#begin')
 
---Plug 'jooize/vim-colemak' -- colemak layout
-Plug 'ayu-theme/ayu-vim'
-Plug 'nikolvs/vim-sunbather'
-Plug 'rakr/vim-two-firewatch'
-Plug 'rainglow/vim'
-Plug 'TheNiteCoder/mountaineer.vim'
-Plug 'owickstrom/vim-colors-paramount'
-Plug 'blazkowolf/gruber-darker.nvim'
-Plug 'shawilly/ponokai'
-Plug 'HealsCodes/vim-gas'
-Plug 'savq/melange-nvim'
-Plug 'ryanoasis/vim-devicons'
-Plug 'jlcrochet/vim-cs'
-Plug 'nyoom-engineering/oxocarbon.nvim'
 Plug 'estheruary/nvim-colorscheme-lavender' -- use with ai bg
 Plug 'fenetikm/falcon'                      -- use with nullscapes bg
-Plug 'lourenci/github-colors'
-Plug 'bgwdotdev/gleam-theme-nvim'
-Plug 'metalelf0/jellybeans-nvim'
-Plug 'marc0246/citylights.nvim'
-Plug 'igorgue/danger'
-Plug 'Patagia/dieter.nvim'
-Plug 'koalhack/koalight.nvim'
-Plug 'rebelot/kanagawa.nvim'
-Plug('embark-theme/vim', { as = 'embark', branch = 'main' })
-Plug('hachy/eva01.vim', { branch = 'main' })
 Plug 'wincent/base16-nvim'
+Plug 'ntk148v/komau.vim'
 
 vim.call('plug#end')
 
@@ -360,12 +353,6 @@ vim.opt.guifont     = 'JetBrainsMonoNL Nerd Font Mono:h14' -- JetBrainsMonoNL_NF
 --})
 
 ---------   theme  ---------
-vim.g.ponokai_transparent_background = "1"
-vim.g.ponokai_enable_italic = "0"
-vim.g.ponokai_better_performance = "1"
-vim.g.ponokai_style = "kitty"
---vim.cmd.colorscheme("ponokai")
-
 vim.o.background = "dark"
 
 -- lualine
@@ -457,7 +444,7 @@ local nf_theme = {
 require('lualine').setup {
     options = {
         icons_enabled = true,
-        theme = rem_theme,
+        theme = "auto",
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
@@ -496,12 +483,19 @@ require('lualine').setup {
     extensions = {}
 }
 
+vim.opt.termguicolors = true
+vim.opt.background = "dark"
+
+vim.g.komau_italic = false
+vim.g.komau_bold = true
+
 --vim.cmd.colorscheme("lavender") -- use with ai bg
 --vim.cmd.colorscheme("base16-stella") -- use with purple anime girl bg
 --vim.cmd.colorscheme("falcon") -- use with nullspaces
-vim.cmd.colorscheme("yuyuko") -- use with rem bg
+--vim.cmd.colorscheme("yuyuko") -- use with rem bg
+vim.cmd.colorscheme("komau")
 
-vim.opt.termguicolors               = true
+
 -- vim.cmd.colorscheme("gruber-darker")
 -- vim transparent
 --vim.g.transparent_groups            = { 'Normal', 'Comment', 'Constant', 'Special', 'Identifier',
