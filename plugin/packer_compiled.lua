@@ -90,11 +90,6 @@ _G.packer_plugins = {
     path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\compile-mode.nvim",
     url = "https://github.com/ej-shafran/compile-mode.nvim"
   },
-  ["gitsigns.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\gitsigns.nvim",
-    url = "https://github.com/lewis6991/gitsigns.nvim"
-  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lualine.nvim",
@@ -104,6 +99,14 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lush.nvim",
     url = "https://github.com/rktjmp/lush.nvim"
+  },
+  minty = {
+    commands = { "Shades", "Huefy" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\minty",
+    url = "https://github.com/nvzone/minty"
   },
   ["neoscroll.nvim"] = {
     loaded = true,
@@ -138,10 +141,26 @@ _G.packer_plugins = {
     path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  showkeys = {
+    commands = { "ShowkeysToggle" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\showkeys",
+    url = "https://github.com/nvzone/showkeys"
+  },
   ["smear-cursor.nvim"] = {
     loaded = true,
     path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\smear-cursor.nvim",
     url = "https://github.com/sphamba/smear-cursor.nvim"
+  },
+  typr = {
+    commands = { "Typr", "TyprStats" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\typr",
+    url = "https://github.com/nvzone/typr"
   },
   ["vim-be-good"] = {
     loaded = true,
@@ -167,6 +186,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-floaterm",
     url = "https://github.com/voldikss/vim-floaterm"
+  },
+  volt = {
+    loaded = true,
+    path = "C:\\Users\\ondar\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\volt",
+    url = "https://github.com/nvzone/volt"
   }
 }
 
@@ -175,6 +199,46 @@ time([[Defining packer_plugins]], false)
 time([[Config for compile-mode.nvim]], true)
 try_loadstring("\27LJ\2\nW\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\0\2\17baleia_setup\2\16buffer_name\16compilation\17compile_mode\6g\bvim\0", "config", "compile-mode.nvim")
 time([[Config for compile-mode.nvim]], false)
+
+-- Command lazy-loads
+time([[Defining lazy-load commands]], true)
+pcall(vim.api.nvim_create_user_command, 'Typr', function(cmdargs)
+          require('packer.load')({'typr'}, { cmd = 'Typr', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'typr'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('Typr ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'TyprStats', function(cmdargs)
+          require('packer.load')({'typr'}, { cmd = 'TyprStats', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'typr'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('TyprStats ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'ShowkeysToggle', function(cmdargs)
+          require('packer.load')({'showkeys'}, { cmd = 'ShowkeysToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'showkeys'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('ShowkeysToggle ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Shades', function(cmdargs)
+          require('packer.load')({'minty'}, { cmd = 'Shades', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'minty'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('Shades ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Huefy', function(cmdargs)
+          require('packer.load')({'minty'}, { cmd = 'Huefy', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'minty'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('Huefy ', 'cmdline')
+      end})
+time([[Defining lazy-load commands]], false)
+
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
