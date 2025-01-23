@@ -6,11 +6,11 @@ require('packer').startup(function(use)
 
     use 'voldikss/vim-floaterm' --floating terminal
 
-    --lsp related stuff and some other things--
+    --lsp related stuff--
     use { 'neoclide/coc.nvim', branch = 'release' }
     use 'OmniSharp/omnisharp-vim'
 
-    --syntax highlight
+    --syntax highlight--
     use 'octol/vim-cpp-enhanced-highlight'
     use 'jlcrochet/vim-cs'
 
@@ -23,10 +23,31 @@ require('packer').startup(function(use)
     use 'nvim-tree/nvim-tree.lua'  --file tree
 
     --use 'tribela/vim-transparent'  --transparent bg(i want to use neovim without it fow now)
+
+    --fun--
     use 'ThePrimeagen/vim-be-good' --funny game bruh
+    use --typing practice in neovim
+    {
+        "nvzone/typr",
+        requires = "nvzone/volt",
+        cmd = { "Typr", "TyprStats" },
+    }
+    use --shows keys lol
+    {
+        "nvzone/showkeys",
+        requires = "nvzone/volt",
+        cmd = "ShowkeysToggle",
+    }
+    use
+    {
+        "nvzone/minty",
+        requires = "nvzone/volt",
+        cmd = { "Shades", "Huefy" },
+    }
+
     use 'svermeulen/vim-cutlass'   --makes d delete, not cut
 
-    use
+    use --compile mode from emacs in neovim
     {
         "ej-shafran/compile-mode.nvim",
         tag = "v5.*",
@@ -66,7 +87,8 @@ require('packer').startup(function(use)
   --          end
   --      end
   --  }
-    use {
+    use
+    {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
         config = function()
@@ -341,10 +363,6 @@ vim.opt.smarttab    = true
 vim.opt.softtabstop = 2
 vim.opt.cindent     = true
 
--- gui settings
-vim.opt.guifont     = 'JetBrainsMonoNL Nerd Font Mono:h14' -- JetBrainsMonoNL_NFM_Medium:h12:W500:cANSI:qDRAFT
---vim.opt.guioptions  = 'T'
-
 -- autocommands
 
 -- no more needed --
@@ -492,7 +510,7 @@ vim.g.komau_italic = false
 --vim.cmd.colorscheme("base16-stella") -- use with purple anime girl bg
 --vim.cmd.colorscheme("falcon") -- use with nullspaces
 --vim.cmd.colorscheme("yuyuko") -- use with rem bg
-vim.cmd.colorscheme("komau")
+vim.cmd.colorscheme("komau") -- cool monochrome theme
 
 
 -- vim.cmd.colorscheme("gruber-darker")
