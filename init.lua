@@ -61,7 +61,7 @@ local colemak_mappings = {
     { modes = { "n", "o", "x" }, lhs = "yi",         rhs = "yi" },
     { modes = { "n", "o", "x" }, lhs = "vi",         rhs = "vi" },
     { modes = { "n", "o", "x" }, lhs = "gd",         rhs = "gd" },
-    { modes = { "n", "o", "x" }, lhs = "di",         rhs = "\"_di" }, 
+    { modes = { "n", "o", "x" }, lhs = "di",         rhs = "\"_di" },
 
 
     -- Undo/redo
@@ -302,8 +302,6 @@ Plug 'ntk148v/komau.vim'
 vim.call('plug#end')
 
 --[[ Plugins Setup ]]
-
-require("nvim-tree").setup()
 
 require("smear_cursor").toggle()
 
