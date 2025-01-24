@@ -1,120 +1,15 @@
--- packer
-vim.cmd [[packadd packer.nvim]]
 
-require('packer').startup(function(use)
-    use 'wbthomason/packer.nvim'
+--[[
+        --using one instance of neovim--
+Server:
+    nvim --listen (servername) [files]
 
-    use 'voldikss/vim-floaterm' --floating terminal
+Joining to server:
+    nvim --server (servername) --remote [files]
 
-    --lsp related stuff--
-    use { 'neoclide/coc.nvim', branch = 'release' }
-    use 'OmniSharp/omnisharp-vim'
-
-    --syntax highlight--
-    use 'octol/vim-cpp-enhanced-highlight'
-    use 'jlcrochet/vim-cs'
-
-    --statusline and buffer line--
-    use
-    {
-        'nvim-lualine/lualine.nvim',
-    }
-
-    use 'nvim-tree/nvim-tree.lua'  --file tree
-
-    --use 'tribela/vim-transparent'  --transparent bg(i want to use neovim without it fow now)
-
-    --fun--
-    use 'ThePrimeagen/vim-be-good' --funny game bruh
-    use --typing practice in neovim
-    {
-        "nvzone/typr",
-        requires = "nvzone/volt",
-        cmd = { "Typr", "TyprStats" },
-    }
-    use --shows keys lol
-    {
-        "nvzone/showkeys",
-        requires = "nvzone/volt",
-        cmd = "ShowkeysToggle",
-    }
-    use
-    {
-        "nvzone/minty",
-        requires = "nvzone/volt",
-        cmd = { "Shades", "Huefy" },
-    }
-
-    use 'svermeulen/vim-cutlass'   --makes d delete, not cut
-
-    use --compile mode from emacs in neovim
-    {
-        "ej-shafran/compile-mode.nvim",
-        tag = "v5.*",
-        branch = "nightly",
-        requires = {
-            "nvim-lua/plenary.nvim",
-            {
-                "m00qek/baleia.nvim",
-                tag = "v1.3.0",
-            },
-        },
-        config = function()
-            ---@type CompileModeOpts
-            vim.g.compile_mode = {
-                buffer_name="compilation",
-                -- to add ANSI escape code support, add:
-                baleia_setup = true,
-            }
-        end,
-    }
-
-  --  use --debugger
-  --  { "rcarriga/nvim-dap-ui",
-  --      requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-  --      config = function()
-  --          local dap = require("dap")
-  --          local dapui = require("dapui")
-  --          dapui.setup()
-  --          dap.listeners.after.event_initialized["dapui_config"] = function()
-  --              dapui.open()
-  --          end
-  --          dap.listeners.before.event_terminated["dapui_config"] = function()
-  --              dapui.close()
-  --          end
-  --          dap.listeners.before.event_exited["dapui_config"] = function()
-  --              dapui.close()
-  --          end
-  --      end
-  --  }
-    use
-    {
-        "windwp/nvim-autopairs",
-        event = "InsertEnter",
-        config = function()
-            require("nvim-autopairs").setup {}
-        end
-    }
-    use "rktjmp/lush.nvim"
-    use 'sphamba/smear-cursor.nvim' -- smooth cursor
-    use 'karb94/neoscroll.nvim'     -- smooth scroll
-end)
--- gui settings
-
-if vim.g.neovide then
-    vim.o.guifont = "Iosevka Fixed SS15:h20"
-end
-
--- vim-plug (i use it only for themes lmao)
-local Plug = vim.fn['plug#']
-vim.call('plug#begin')
-
-Plug 'estheruary/nvim-colorscheme-lavender' -- use with ai bg
-Plug 'fenetikm/falcon'                      -- use with nullscapes bg
-Plug 'wincent/base16-nvim'
-Plug 'ntk148v/komau.vim'
-
-vim.call('plug#end')
+Getting servername:
+    :echo v:servername
+]]
 
 --[[  colemak layout support  ]] --
 -- based on https://github.com/linduxed/colemak.nvim
@@ -145,9 +40,9 @@ local colemak_mappings = {
 
     -- End of word left/right
     { modes = { "n", "o", "x" }, lhs = "N",          rhs = "ge",     desc = "End of word back" },
-    { modes = { "n", "o", "x" }, lhs = "<M-n>",      rhs = "gE",     desc = "End of WORD back" },
+    { modes = { "n", "o", "x" }, lhs = "<M-a>",      rhs = "gE",     desc = "End of WORD back" },
     { modes = { "n", "o", "x" }, lhs = "I",          rhs = "e",      desc = "End of word forward" },
-    { modes = { "n", "o", "x" }, lhs = "<M-i>",      rhs = "E",      desc = "End of WORD forward" },
+    { modes = { "n", "o", "x" }, lhs = "<M-t>",      rhs = "E",      desc = "End of WORD forward" },
 
     -- Text objects
     -- Move visual replace from 'r' to 'R'
@@ -166,15 +61,7 @@ local colemak_mappings = {
     { modes = { "n", "o", "x" }, lhs = "yi",         rhs = "yi" },
     { modes = { "n", "o", "x" }, lhs = "vi",         rhs = "vi" },
     { modes = { "n", "o", "x" }, lhs = "gd",         rhs = "gd" },
-    { modes = { "n", "o", "x" }, lhs = "di",         rhs = "\"_di" },
-    { modes = { "n", "o", "x" }, lhs = "<C-w>n",     rhs = "<C-w>h", },
-    { modes = { "n", "o", "x" }, lhs = "<C-w>u",     rhs = "<C-w>k", },
-    { modes = { "n", "o", "x" }, lhs = "<C-w>e",     rhs = "<C-w>j", },
-    { modes = { "n", "o", "x" }, lhs = "<C-w>i",     rhs = "<C-w>l", },
-    { modes = { "n", "o", "x" }, lhs = "<C-w>N",     rhs = "<C-w>H", },
-    { modes = { "n", "o", "x" }, lhs = "<C-w>U",     rhs = "<C-w>K", },
-    { modes = { "n", "o", "x" }, lhs = "<C-w>E",     rhs = "<C-w>J", },
-    { modes = { "n", "o", "x" }, lhs = "<C-w>I",     rhs = "<C-w>L", },
+    { modes = { "n", "o", "x" }, lhs = "di",         rhs = "\"_di" }, 
 
 
     -- Undo/redo
@@ -190,6 +77,7 @@ local colemak_mappings = {
 
     -- Insert in Visual mode
     { modes = { "v" },           lhs = "J",          rhs = "I" },
+    { modes = { "v" },           lhs = "B",          rhs = "A" },
 
     -- Search
     { modes = { "n", "o", "x" }, lhs = "k",          rhs = "n" },
@@ -266,6 +154,153 @@ function colemak_setup(_)
 end
 
 colemak_setup()
+-- packer
+vim.cmd [[packadd packer.nvim]]
+
+require('packer').startup(function(use)
+    use 'wbthomason/packer.nvim'
+
+    use 'voldikss/vim-floaterm' --floating terminal
+
+    --lsp related stuff--
+    use { 'neoclide/coc.nvim', branch = 'release' }
+    use 'OmniSharp/omnisharp-vim'
+
+    --syntax highlight--
+    use 'octol/vim-cpp-enhanced-highlight'
+    use 'jlcrochet/vim-cs'
+
+    --statusline and buffer line--
+    use
+    {
+        'nvim-lualine/lualine.nvim',
+    }
+
+    --use 'tribela/vim-transparent'  --transparent bg(i want to use neovim without it fow now)
+
+    --fun--
+    use 'ThePrimeagen/vim-be-good' --funny game bruh
+    use --typing practice in neovim
+    {
+        "nvzone/typr",
+        requires = "nvzone/volt",
+        cmd = { "Typr", "TyprStats" },
+    }
+    use --shows keys lol
+    {
+        "nvzone/showkeys",
+        requires = "nvzone/volt",
+        cmd = "ShowkeysToggle",
+    }
+    use
+    {
+        "nvzone/minty",
+        requires = "nvzone/volt",
+        cmd = { "Shades", "Huefy" },
+    }
+
+    use 'svermeulen/vim-cutlass'   --makes d delete, not cut
+
+    --emacs features--
+    use --compile mode from emacs in neovim
+    {
+        "ej-shafran/compile-mode.nvim",
+        tag = "v5.*",
+        branch = "nightly",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            {
+                "m00qek/baleia.nvim",
+                tag = "v1.3.0",
+            },
+        },
+        config = function()
+            ---@type CompileModeOpts
+            vim.g.compile_mode = {
+                buffer_name="compilation",
+                -- to add ANSI escape code support, add:
+                baleia_setup = true,
+            }
+        end,
+    }
+
+    use
+    {
+        "X3eRo0/dired.nvim",
+        requires = "MunifTanjim/nui.nvim",
+        config = function()
+                require("dired").setup({
+                    path_separator = "/",                -- Use '/' as the path separator
+                    show_hidden = true,                  -- Show hidden files
+                    show_icons = false,                  -- Show icons (patched font required)
+                    show_banner = false,                 -- Do not show the banner
+                    hide_details = false,                -- Show file details by default
+                    sort_order = "name",                 -- Sort files by name by default
+                    -- Define keybindings for various 'dired' actions
+                    keybinds = {
+                        dired_enter = "<cr>",
+                        dired_back = "-",
+                        dired_up = "_",
+                        dired_rename = "R",
+                        dired_create = "d",
+                        dired_delete = "D",
+                        dired_delete_range = "D",
+                        dired_copy = "C",
+                        dired_copy_range = "C",
+                        dired_copy_marked = "MC",
+                        dired_move = "X",
+                        dired_move_range = "X",
+                        dired_move_marked = "MX",
+                        dired_paste = "P",
+                        dired_mark = "M",
+                        dired_mark_range = "M",
+                        dired_delete_marked = "MD",
+                        dired_toggle_hidden = ".",
+                        dired_toggle_sort_order = ",",
+                        dired_toggle_icons = "*",
+                        dired_toggle_colors = "c",
+                        dired_toggle_hide_details = "(",
+                        dired_quit = "q",
+                    },
+                    -- Define colors for different file types and attributes
+                    colors = {
+                        DiredDimText = { link = {}, bg = "NONE", fg = "505050", gui = "NONE" },
+                        DiredDirectoryName = { link = {}, bg = "NONE", fg = "9370DB", gui = "NONE" },
+                        -- ... (define more colors as needed)
+                        DiredMoveFile = { link = {}, bg = "NONE", fg = "ff3399", gui = "bold" },
+                    },
+                })
+        end
+    }
+    use
+    {
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        config = function()
+            require("nvim-autopairs").setup {}
+        end
+    }
+    use "rktjmp/lush.nvim"
+    use 'sphamba/smear-cursor.nvim' -- smooth cursor
+    use 'karb94/neoscroll.nvim'     -- smooth scroll
+end)
+-- gui settings
+
+if vim.g.neovide then
+    vim.o.guifont = "Iosevka Fixed SS15:h20"
+end
+
+-- vim-plug (i use it only for themes lmao)
+local Plug = vim.fn['plug#']
+vim.call('plug#begin')
+
+Plug 'estheruary/nvim-colorscheme-lavender' -- use with ai bg
+Plug 'fenetikm/falcon'                      -- use with nullscapes bg
+Plug 'wincent/base16-nvim'
+Plug 'ntk148v/komau.vim'
+
+vim.call('plug#end')
+
 --[[ Plugins Setup ]]
 
 require("nvim-tree").setup()
