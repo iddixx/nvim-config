@@ -287,7 +287,7 @@ end)
 -- gui settings
 
 if vim.g.neovide then
-    vim.o.guifont = "Iosevka Fixed SS15:h20"
+    vim.o.guifont = "Iosevka Fixed SS15:h18"
 end
 
 -- vim-plug (i use it only for themes lmao)
