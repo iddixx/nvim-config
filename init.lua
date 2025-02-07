@@ -348,6 +348,7 @@ vim.cmd("syntax on")
 vim.cmd("filetype on")
 vim.cmd("filetype indent on")
 vim.cmd("set t_Co=256")
+vim.cmd("command B buffers")
 -- line numbers
 vim.opt.number         = true
 vim.opt.relativenumber = true
