@@ -117,6 +117,7 @@ local colemak_mappings = {
     { modes = { "n" },           lhs = "<C-w>U",     rhs = "<C-w>K" },
     { modes = { "n" },           lhs = "<C-w>E",     rhs = "<C-w>J" },
     { modes = { "n" },           lhs = "<C-w>I",     rhs = "<C-w>L" },
+    { modes = { "t", "i" },           lhs = "<C-w><ESC>",     rhs = "<C-\\><C-n>" },
     -- Disable spawning empty buffer
     { modes = { "n" },           lhs = "<C-w><C-n>", rhs = "<nop>" },
 }
