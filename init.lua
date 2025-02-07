@@ -340,25 +340,7 @@ local modes = { 'n', 'v', 'x' }
 for key, func in pairs(keymap) do
     vim.keymap.set(modes, key, func)
 end
--- dap
---local dap = require('dap')
---dap.adapters.coreclr = {
---    type = 'executable',
---    command = 'C:\\netcoredbg',
---    args = { '--interpreter=vscode' }
---}
---
---dap.configurations.cs = {
---    {
---        type = "coreclr",
---        name = "launch - netcoredbg",
---        request = "launch",
---        program = function()
---            return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
---        end,
---    },
---}
---require("dapui").setup()
+
 --[[ Editor ]]
 vim.g.loaded_netrw       = 1
 vim.g.loaded_netrwPlugin = 1
