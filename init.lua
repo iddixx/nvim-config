@@ -40,9 +40,9 @@ local colemak_mappings = {
 
     -- End of word left/right
     { modes = { "n", "o", "x" }, lhs = "N",          rhs = "ge",     desc = "End of word back" },
-    { modes = { "n", "o", "x" }, lhs = "<M-a>",      rhs = "gE",     desc = "End of WORD back" },
+    { modes = { "n", "o", "x" }, lhs = "<M-n>",      rhs = "gE",     desc = "End of WORD back" },
     { modes = { "n", "o", "x" }, lhs = "I",          rhs = "e",      desc = "End of word forward" },
-    { modes = { "n", "o", "x" }, lhs = "<M-t>",      rhs = "E",      desc = "End of WORD forward" },
+    { modes = { "n", "o", "x" }, lhs = "<M-i>",      rhs = "E",      desc = "End of WORD forward" },
 
     -- Text objects
     -- Move visual replace from 'r' to 'R'
@@ -176,7 +176,7 @@ require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim',
     }
 
-    --use 'tribela/vim-transparent'  --transparent bg(i want to use neovim without it fow now)
+    use 'tribela/vim-transparent'  --transparent bg(i turning it off sometimes)
 
     --fun--
     use 'ThePrimeagen/vim-be-good' --funny game bruh
@@ -298,6 +298,7 @@ Plug 'estheruary/nvim-colorscheme-lavender' -- use with ai bg
 Plug 'fenetikm/falcon'                      -- use with nullscapes bg
 Plug 'wincent/base16-nvim'
 Plug 'ntk148v/komau.vim'
+Plug 'andreypopp/vim-colors-plain'
 
 vim.call('plug#end')
 
@@ -544,7 +545,8 @@ vim.g.komau_italic = false
 --vim.cmd.colorscheme("base16-stella") -- use with purple anime girl bg
 --vim.cmd.colorscheme("falcon") -- use with nullspaces
 --vim.cmd.colorscheme("yuyuko") -- use with rem bg
-vim.cmd.colorscheme("komau") -- cool monochrome theme
+--vim.cmd.colorscheme("komau") -- cool monochrome theme
+vim.cmd.colorscheme("plain") -- other cool monochrome theme
 
 
 -- vim.cmd.colorscheme("gruber-darker")
