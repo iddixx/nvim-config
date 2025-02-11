@@ -530,9 +530,9 @@ vim.g.komau_italic = false
 --vim.cmd.colorscheme("base16-stella") -- use with purple anime girl bg
 --vim.cmd.colorscheme("falcon") -- use with nullspaces
 --vim.cmd.colorscheme("yuyuko") -- use with rem bg
+vim.cmd.colorscheme("base16-everforest-dark-hard") -- use with komari bg
 --vim.cmd.colorscheme("komau") -- cool monochrome theme
-vim.cmd.colorscheme("plain") -- other cool monochrome theme
-
+--vim.cmd.colorscheme("plain") -- other cool monochrome theme
 
 -- vim.cmd.colorscheme("gruber-darker")
 -- vim transparent
