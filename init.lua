@@ -1,4 +1,3 @@
-
 --[[
         --using one instance of neovim--
 Server:
@@ -117,9 +116,12 @@ local colemak_mappings = {
     { modes = { "n" },           lhs = "<C-w>U",     rhs = "<C-w>K" },
     { modes = { "n" },           lhs = "<C-w>E",     rhs = "<C-w>J" },
     { modes = { "n" },           lhs = "<C-w>I",     rhs = "<C-w>L" },
-    { modes = { "t", "i" },           lhs = "<C-w><ESC>",     rhs = "<C-\\><C-n>" },
+    { modes = { "t", "i" },      lhs = "<C-w><ESC>", rhs = "<C-\\><C-n>" },
     -- Disable spawning empty buffer
     { modes = { "n" },           lhs = "<C-w><C-n>", rhs = "<nop>" },
+    
+    --other
+    { modes = { "n" },           lhs = "<M-d>",  rhs = "<cmd>lua vim.diagnostic.open_float()<CR>" },
 }
 
 function colemak_apply()
@@ -165,6 +167,7 @@ require('packer').startup(function(use)
 
     --lsp related stuff--
     use { 'neoclide/coc.nvim', branch = 'release' }
+    use 'neovim/nvim-lspconfig'
     use 'OmniSharp/omnisharp-vim'
 
     --syntax highlight--
@@ -342,6 +345,10 @@ for key, func in pairs(keymap) do
     vim.keymap.set(modes, key, func)
 end
 
+--[[ LSP Setup ]]
+
+require 'lspconfig'.gleam.setup({})
+
 --[[ Editor ]]
 vim.g.loaded_netrw       = 1
 vim.g.loaded_netrwPlugin = 1
@@ -382,13 +389,6 @@ vim.opt.autoindent  = true
 vim.opt.smarttab    = true
 vim.opt.softtabstop = 2
 vim.opt.cindent     = true
-
--- autocommands
-
--- no more needed --
---vim.api.nvim_create_autocmd("VimEnter", {
---    command = [[silent execute "!echo " . v:servername . " > servername.txt"]],
---})
 
 ---------   theme  ---------
 vim.o.background = "dark"
@@ -534,20 +534,11 @@ vim.cmd.colorscheme("base16-everforest-dark-hard") -- use with komari bg
 --vim.cmd.colorscheme("komau") -- cool monochrome theme
 --vim.cmd.colorscheme("plain") -- other cool monochrome theme
 
--- vim.cmd.colorscheme("gruber-darker")
--- vim transparent
---vim.g.transparent_groups            = { 'Normal', 'Comment', 'Constant', 'Special', 'Identifier',
---    'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String',
---    'Function', 'Conditional', 'Repeat', 'Operator', 'Structure',
---    'LineNr', 'NonText', 'SignColumn', 'CursorLineNr', 'EndOfBuffer', 'Pmenu' }
-
 --omnisharp
 vim.g.OmniSharp_server_path         = 'C:\\Users\\ondar\\!language_servers\\Omnisharp\\OmniSharp.exe'
 vim.g.OmniSharp_selector_findusages = 'fzf'
 
-
 -- cpp higlight
-
 vim.g.lsp_cxx_hl_use_text_props     = 1
 vim.g.cpp_class_scope_highlight     = 1
 vim.g.cpp_member_variable_highlight = 1
@@ -557,7 +548,6 @@ vim.g.cpp_concepts_highlight        = 1
 
 
 --[[ Mappings ]]
-
 vim.api.nvim_set_keymap('n', '<C-k>', '<up>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-j>', '<down>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-h>', '<left>', { noremap = true })
@@ -567,11 +557,9 @@ vim.g.floaterm_keymap_toggle = '<Space>tt'
 vim.g.floaterm_keymap_kill   = '<Space>tk'
 
 
--- [[ autocommands ]]
-
 --[[ coc.nvim ]]
-vim.g.coc_global_extensions = { 'coc-lua', 'coc-java', 'coc-discord-rpc',
-    'coc-cmake', 'coc-json', 'coc-highlight', 'coc-clangd', 'coc-tabnine' }
+vim.g.coc_global_extensions = { 'coc-java', 'coc-discord-rpc',
+    'coc-cmake', 'coc-json', 'coc-highlight', 'coc-tabnine' }
 -- Some servers have issues with backup files, see #649
 vim.opt.backup = false
 vim.opt.writebackup = false
