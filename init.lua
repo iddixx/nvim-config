@@ -33,9 +33,12 @@ local colemak_mappings = {
     { modes = { "n", "v" },      lhs = "A",          rhs = "B",      desc = "WORD back" },
     { modes = { "n", "v" },      lhs = "T",          rhs = "W",      desc = "WORD forward" },
 
-    -- Brace movement
+    -- Braces & Brackets movement
     { modes = { "n", "o", "x" }, lhs = "x",          rhs = "%" },
-
+    { modes = { "n", "o", "x" }, lhs = ",c",         rhs = "[{" },
+    { modes = { "n", "o", "x" }, lhs = ".c",         rhs = "]}" },
+    { modes = { "n", "o", "x" }, lhs = ",b",         rhs = "[(" },
+    { modes = { "n", "o", "x" }, lhs = ".b",         rhs = "])" },
 
     -- End of word left/right
     { modes = { "n", "o", "x" }, lhs = "N",          rhs = "ge",     desc = "End of word back" },
@@ -61,7 +64,6 @@ local colemak_mappings = {
     { modes = { "n", "o", "x" }, lhs = "vi",         rhs = "vi" },
     { modes = { "n", "o", "x" }, lhs = "gd",         rhs = "gd" },
     { modes = { "n", "o", "x" }, lhs = "di",         rhs = "\"_di" },
-
 
     -- Undo/redo
     { modes = { "n" },           lhs = "l",          rhs = "u" },
