@@ -623,7 +623,7 @@ function _G.show_docs()
     end
 end
 
-keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', { silent = true })
+--keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', { silent = true })
 
 
 -- Highlight the symbol and its references on a CursorHold event(cursor is idle)
