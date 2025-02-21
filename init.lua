@@ -121,9 +121,10 @@ local colemak_mappings = {
     { modes = { "t", "i" },      lhs = "<C-w><ESC>", rhs = "<C-\\><C-n>" },
     -- Disable spawning empty buffer
     { modes = { "n" },           lhs = "<C-w><C-n>", rhs = "<nop>" },
-    
+
     --other
     { modes = { "n" },           lhs = "<M-d>",  rhs = "<cmd>lua vim.diagnostic.open_float()<CR>" },
+    { modes = { "n" },           lhs = ";",  rhs = "q:" },
 }
 
 function colemak_apply()
@@ -549,12 +550,6 @@ vim.g.cpp_posix_standard            = 1
 vim.g.cpp_concepts_highlight        = 1
 
 
---[[ Mappings ]]
-vim.api.nvim_set_keymap('n', '<C-k>', '<up>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-j>', '<down>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-h>', '<left>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-l>', '<right>', { noremap = true })
-
 vim.g.floaterm_keymap_toggle = '<Space>tt'
 vim.g.floaterm_keymap_kill   = '<Space>tk'
 
@@ -694,7 +689,7 @@ keyset("x", "ac", "<Plug>(coc-classobj-a)", opts)
 keyset("o", "ac", "<Plug>(coc-classobj-a)", opts)
 
 
--- Remap <C-f> and <C-b> to scroll float windows/popups
+-- Remap  and <C-b> to scroll float windows/popups
 ---@diagnostic disable-next-line: redefined-local
 local opts = { silent = true, nowait = true, expr = true }
 keyset("n", "<C-f>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-f>"', opts)
