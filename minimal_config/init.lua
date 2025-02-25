@@ -190,7 +190,9 @@ vim.opt.laststatus     = 2
 --vim.cmd("set noshowmode")
 
 -- english lang
-vim.api.nvim_exec('language en_US', true)
+if vim.uv.os_uname().sysname == "Windows_NT" then
+    vim.api.nvim_exec('language en_US', true)
+end
 
 -- tab options
 vim.opt.expandtab   = true

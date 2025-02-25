@@ -379,7 +379,9 @@ vim.opt.laststatus     = 2
 vim.cmd("set noshowmode")
 
 -- english lang
-vim.api.nvim_exec('language en_US', true)
+if vim.uv.os_uname().sysname == "Windows_NT" then
+    vim.api.nvim_exec('language en_US', true)
+end
 
 -- gnu assembly syntax highlighting
 vim.opt.ft          = 'gas'
@@ -555,8 +557,8 @@ vim.g.floaterm_keymap_kill   = '<Space>tk'
 
 
 --[[ coc.nvim ]]
-vim.g.coc_global_extensions = { 'coc-java', 'coc-discord-rpc',
-    'coc-cmake', 'coc-json', 'coc-highlight', 'coc-tabnine' }
+vim.g.coc_global_extensions = { 'coc-discord-rpc',
+    'coc-cmake',  'coc-highlight', 'coc-tabnine' }
 -- Some servers have issues with backup files, see #649
 vim.opt.backup = false
 vim.opt.writebackup = false
