@@ -123,8 +123,8 @@ local colemak_mappings = {
     { modes = { "n" },           lhs = "<C-w><C-n>", rhs = "<nop>" },
 
     --other
-    { modes = { "n" },           lhs = "<M-d>",  rhs = "<cmd>lua vim.diagnostic.open_float()<CR>" },
-    { modes = { "n" },           lhs = ";",  rhs = "q:" },
+    { modes = { "n" },           lhs = "<M-d>",      rhs = "<cmd>lua vim.diagnostic.open_float()<CR>" },
+    { modes = { "n" },           lhs = ";",          rhs = "q:" },
 }
 
 function colemak_apply()
@@ -503,12 +503,12 @@ require('lualine').setup {
         }
     },
     sections = {
-        lualine_a = { 'mode' },
+        lualine_a = { 'location' },
         lualine_b = { 'branch', 'diff', 'filename' },
         lualine_c = {},
         lualine_x = {},
         lualine_y = { 'encoding' },
-        lualine_z = { 'location' }
+        lualine_z = { 'mode' }
     },
     inactive_sections = {
         lualine_a = {},
