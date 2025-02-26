@@ -51,6 +51,7 @@ local colemak_mappings = {
     { modes = { "o", "v" },      lhs = "R",          rhs = "r",      desc = "Replace" },
 
     -- Copy/paste/delete/cut
+    { modes = { "n", "o", "x" }, lhs = "X",          rhs = "x" },
     { modes = { "n", "o", "x" }, lhs = "y",          rhs = "y" },
     { modes = { "n", "x" },      lhs = "p",          rhs = "p" },
     { modes = { "n", "o", "x" }, lhs = "c",          rhs = "c" },

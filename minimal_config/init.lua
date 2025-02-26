@@ -52,6 +52,7 @@ local colemak_mappings = {
     { modes = { "o", "v" },      lhs = "R",          rhs = "r",      desc = "Replace" },
 
     -- Copy/paste/delete/cut
+    { modes = { "n", "o", "x" }, lhs = "X",          rhs = "x" },
     { modes = { "n", "o", "x" }, lhs = "y",          rhs = "y" },
     { modes = { "n", "x" },      lhs = "p",          rhs = "p" },
     { modes = { "n", "o", "x" }, lhs = "c",          rhs = "c" },
@@ -122,10 +123,10 @@ local colemak_mappings = {
     { modes = { "t", "i" },      lhs = "<C-w><ESC>", rhs = "<C-\\><C-n>" },
     -- Disable spawning empty buffer
     { modes = { "n" },           lhs = "<C-w><C-n>", rhs = "<nop>" },
-    
+
     --other
-    { modes = { "n" },           lhs = "<M-d>",  rhs = "<cmd>lua vim.diagnostic.open_float()<CR>" },
-    { modes = { "n" },           lhs = ";",  rhs = "q:" },
+    { modes = { "n" },           lhs = "<M-d>",      rhs = "<cmd>lua vim.diagnostic.open_float()<CR>" },
+    { modes = { "n" },           lhs = ";",          rhs = "q:" },
 }
 
 function colemak_apply()
