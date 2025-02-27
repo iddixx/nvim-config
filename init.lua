@@ -489,9 +489,14 @@ local nf_theme = {
     },
 }
 
+function get_count_in_selection()
+  local selection = table.concat(vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos(".")), "\n")
+  return string.len(selection)
+end
+
 require('lualine').setup {
     options = {
-        icons_enabled = true,
+        icons_enabled = false,
         theme = "auto",
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
@@ -511,11 +516,11 @@ require('lualine').setup {
     },
     sections = {
         lualine_a = { 'location' },
-        lualine_b = { 'branch', 'diff', 'filename' },
+        lualine_b = { 'filename' },
         lualine_c = {},
         lualine_x = {},
-        lualine_y = { 'encoding' },
-        lualine_z = { 'mode' }
+        lualine_y = {},
+        lualine_z = { get_count_in_selection }
     },
     inactive_sections = {
         lualine_a = {},
