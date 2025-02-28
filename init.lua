@@ -16,8 +16,8 @@ Getting servername:
 local colemak_mappings = {
     -- Up/down/left/right
     { modes = { "n", "o", "x" }, lhs = "n",          rhs = "h",      desc = "Left (h)" },
-    { modes = { "n", "o", "x" }, lhs = "u",          rhs = "k",      desc = "Up (k)" },
-    { modes = { "n", "o", "x" }, lhs = "e",          rhs = "j",      desc = "Down (j)" },
+    { modes = { "n", "o", "x" }, lhs = "u",          rhs = "gk",     desc = "Up (k)" },
+    { modes = { "n", "o", "x" }, lhs = "e",          rhs = "gj",     desc = "Down (j)" },
     { modes = { "n", "o", "x" }, lhs = "i",          rhs = "l",      desc = "Right (l)" },
     { modes = { "n", "o", "x" }, lhs = "N",          rhs = "H",      desc = "Left (h)" },
     { modes = { "n", "o", "x" }, lhs = "U",          rhs = "K",      desc = "Up (k)" },
@@ -560,6 +560,18 @@ function get_count_in_selection()
   return string.len(selection)
 end
 
+
+    
+function generate_random_text(text)
+    local text_table = {"the", "be", "of", "and", "a", "to", "in", "he", "have", "it", "that", "for", "they", "I", "with", "as", "not", "on", "she", "at", "by", "this", "we", "you", "do", "but", "from", "or", "which", "one", "would", "all", "will", "there", "say", "who", "make", "when", "can", "more", "if", "no", "man", "out", "other", "so", "what", "time", "up", "go", "about", "than", "into", "could", "state", "only", "new", "year", "some", "take", "come", "these", "know", "see", "use", "get", "like", "then", "first", "any", "work", "now", "may", "such", "give", "over", "think", "most", "even", "find", "day", "also", "after", "way", "many", "must", "look", "before", "great", "back", "through", "long", "where", "much", "should", "well", "people", "down", "own", "just", "because", "good", "each", "those", "feel", "seem", "how", "high", "too", "place", "little", "world", "very", "still", "nation", "hand", "old", "life", "tell", "write", "become", "here", "show", "house", "both", "between", "need", "mean", "call", "develop", "under", "last", "right", "move", "thing", "general", "school", "never", "same", "another", "begin", "while", "number", "part", "turn", "real", "leave", "might", "want", "point", "form", "off", "child", "few", "small", "since", "against", "ask", "late", "home", "large", "person", "end", "open", "public", "follow", "during", "present", "without", "again", "hold", "govern", "around", "head", "word", "program", "problem", "however", "lead", "system", "set", "order", "eye", "plan", "run", "keep", "face", "fact", "group", "play", "stand", "early", "course", "change", "help", "line"}
+
+    local result = ""
+    for i=1,math.random(1, 3) do
+        result = result .. text_table[math.random(100)] .. " "
+    end
+    result = string.sub(result, 1, (string.len(result) - 1)) -- removing last space
+    return result
+end
 require('lualine').setup {
     options = {
         icons_enabled = false,
@@ -581,6 +593,22 @@ require('lualine').setup {
         }
     },
     sections = {
+        lualine_a = { generate_random_text },
+        lualine_b = { generate_random_text },
+        lualine_c = { generate_random_text },
+        lualine_x = { generate_random_text },
+        lualine_y = { generate_random_text },
+        lualine_z = { generate_random_text }
+    },
+    inactive_sections = {
+      --lualine_a = {},
+      --lualine_b = {},
+      --lualine_c = { 'filename' },
+      --lualine_x = { 'location' },
+      --lualine_y = {},
+      --lualine_z = {}
+    },
+    tabline = {
         lualine_a = { 'location' },
         lualine_b = { 'filename' },
         lualine_c = {},
@@ -588,15 +616,6 @@ require('lualine').setup {
         lualine_y = {},
         lualine_z = { get_count_in_selection }
     },
-    inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = { 'filename' },
-        lualine_x = { 'location' },
-        lualine_y = {},
-        lualine_z = {}
-    },
-    tabline = {},
     winbar = {},
     inactive_winbar = {},
     extensions = {}

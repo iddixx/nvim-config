@@ -16,8 +16,8 @@ Getting servername:
 local colemak_mappings = {
     -- Up/down/left/right
     { modes = { "n", "o", "x" }, lhs = "n",          rhs = "h",      desc = "Left (h)" },
-    { modes = { "n", "o", "x" }, lhs = "u",          rhs = "k",      desc = "Up (k)" },
-    { modes = { "n", "o", "x" }, lhs = "e",          rhs = "j",      desc = "Down (j)" },
+    { modes = { "n", "o", "x" }, lhs = "u",          rhs = "gk",     desc = "Up (k)" },
+    { modes = { "n", "o", "x" }, lhs = "e",          rhs = "gj",     desc = "Down (j)" },
     { modes = { "n", "o", "x" }, lhs = "i",          rhs = "l",      desc = "Right (l)" },
     { modes = { "n", "o", "x" }, lhs = "N",          rhs = "H",      desc = "Left (h)" },
     { modes = { "n", "o", "x" }, lhs = "U",          rhs = "K",      desc = "Up (k)" },
