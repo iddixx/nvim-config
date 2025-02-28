@@ -35,98 +35,163 @@ local colemak_mappings = {
     { modes = { "n", "v" },      lhs = "T",          rhs = "W",      desc = "WORD forward" },
 
     -- Braces & Brackets movement
-    { modes = { "n", "o", "x" }, lhs = "x",          rhs = "%" },
-    { modes = { "n", "o", "x" }, lhs = ",c",         rhs = "[{" },
-    { modes = { "n", "o", "x" }, lhs = ".c",         rhs = "]}" },
-    { modes = { "n", "o", "x" }, lhs = ",b",         rhs = "[(" },
-    { modes = { "n", "o", "x" }, lhs = ".b",         rhs = "])" },
+    { modes = { "n", "o", "x" },      lhs = "x",          rhs = "%" },
+    { modes = { "n", "o", "x" },      lhs = ",c",         rhs = "[{" },
+    { modes = { "n", "o", "x" },      lhs = ".c",         rhs = "]}" },
+    { modes = { "n", "o", "x" },      lhs = ",b",         rhs = "[(" },
+    { modes = { "n", "o", "x" },      lhs = ".b",         rhs = "])" },
 
     -- End of word left/right
-    { modes = { "n", "o", "x" }, lhs = "N",          rhs = "ge",     desc = "End of word back" },
-    { modes = { "n", "o", "x" }, lhs = "<M-n>",      rhs = "gE",     desc = "End of WORD back" },
-    { modes = { "n", "o", "x" }, lhs = "I",          rhs = "e",      desc = "End of word forward" },
-    { modes = { "n", "o", "x" }, lhs = "<M-i>",      rhs = "E",      desc = "End of WORD forward" },
+    { modes = { "n", "o", "x" },      lhs = "N",          rhs = "ge",     desc = "End of word back" },
+    { modes = { "n", "o", "x" },      lhs = "<M-n>",      rhs = "gE",     desc = "End of WORD back" },
+    { modes = { "n", "o", "x" },      lhs = "I",          rhs = "e",      desc = "End of word forward" },
+    { modes = { "n", "o", "x" },      lhs = "<M-i>",      rhs = "E",      desc = "End of WORD forward" },
 
-    -- Text objects
-    -- Move visual replace from 'r' to 'R'
-    { modes = { "o", "v" },      lhs = "R",          rhs = "r",      desc = "Replace" },
+    -- Move visual replace from      'r' to 'R'
+    { modes = { "o", "v" },           lhs = "R",          rhs = "r",      desc = "Replace" },
 
     -- Copy/paste/delete/cut
-    { modes = { "n", "o", "x" }, lhs = "X",          rhs = "x" },
-    { modes = { "n", "o", "x" }, lhs = "y",          rhs = "y" },
-    { modes = { "n", "x" },      lhs = "p",          rhs = "p" },
-    { modes = { "n", "o", "x" }, lhs = "c",          rhs = "c" },
-    { modes = { "n", "o", "x" }, lhs = "c",          rhs = "c" },
-    { modes = { "n", "o", "x" }, lhs = "cc",         rhs = "cc" },  --[[ cut fix,
-    cutlass deletes with c, which is not comfotable for me]]
+    { modes = { "n", "o", "x", "v" }, lhs = "y",          rhs = "y" },
+    { modes = { "n", "o", "x", "v" }, lhs = "p",          rhs = "p" },
+    { modes = { "n", "o", "x", "v" }, lhs = "d",          rhs = "\"_d" },
+    { modes = { "n", "o", "x" },      lhs = "dc",         rhs = "\"_x" },
+    { modes = { "n", "o", "x" },      lhs = "dd",         rhs = "\"_dd" },
+
+    -- Surround text
+
+    -- Brackets
+    { modes = { "n", "o", "x" },      lhs = "siw)",       rhs = "ciw()<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "saw)",       rhs = "caw()<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "siW)",       rhs = "ciW()<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "saW)",       rhs = "caW()<Esc>P" },
+    { modes = { "v" },                lhs = "s)",         rhs = "c()<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "siw(",       rhs = "ciw()<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "saw(",       rhs = "caw()<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "siW(",       rhs = "ciW()<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "saW(",       rhs = "caW()<Esc>P" },
+    { modes = { "v" },                lhs = "s(",         rhs = "c()<Esc>P" },
+
+    -- Curly Braces
+    { modes = { "n", "o", "x" },      lhs = "siw}",       rhs = "ciw{}<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "saw}",       rhs = "caw{}<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "siW}",       rhs = "ciW{}<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "saW}",       rhs = "caW{}<Esc>P" },
+    { modes = { "v" },                lhs = "s}",         rhs = "c{}<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "siw{",       rhs = "ciw{}<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "saw{",       rhs = "caw{}<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "siW{",       rhs = "ciW{}<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "saW{",       rhs = "caW{}<Esc>P" },
+    { modes = { "v" },                lhs = "s{",         rhs = "c{}<Esc>P" },
+
+    -- Square Braces
+    { modes = { "n", "o", "x" },      lhs = "siw]",       rhs = "ciw[]<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "saw]",       rhs = "caw[]<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "siW]",       rhs = "ciW[]<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "saW]",       rhs = "caW[]<Esc>P" },
+    { modes = { "v" },                lhs = "s]",         rhs = "c[]<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "siw[",       rhs = "ciw[]<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "saw[",       rhs = "caw[]<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "siW[",       rhs = "ciW[]<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "saW[",       rhs = "caW[]<Esc>P" },
+    { modes = { "v" },                lhs = "s[",         rhs = "c[]<Esc>P" },
+
+    -- Angle Brackets
+    { modes = { "n", "o", "x" },      lhs = "siw>",       rhs = "ciw<><Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "saw>",       rhs = "caw<><Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "siW>",       rhs = "ciW<><Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "saW>",       rhs = "caW<><Esc>P" },
+    { modes = { "v" },                lhs = "s>",         rhs = "c<><Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "siw<",       rhs = "ciw<><Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "saw<",       rhs = "caw<><Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "siW<",       rhs = "ciW<><Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "saW<",       rhs = "caW<><Esc>P" },
+    { modes = { "v" },                lhs = "s<",         rhs = "c<><Esc>P" },
+
+    -- Single Quotes
+    { modes = { "n", "o", "x" },      lhs = "siw\'",       rhs = "ciw\'\'<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "saw\'",       rhs = "caw\'\'<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "siW\'",       rhs = "ciW\'\'<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "saW\'",       rhs = "caW\'\'<Esc>P" },
+    { modes = { "v" },                lhs = "s\'",         rhs = "c\'\'<Esc>P" },
+
+    -- Double Quotes
+    { modes = { "n", "o", "x" },      lhs = "siw\"",       rhs = "ciw\"\"<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "saw\"",       rhs = "caw\"\"<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "siW\"",       rhs = "ciW\"\"<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "saW\"",       rhs = "caW\"\"<Esc>P" },
+    { modes = { "n", "o", "x" },      lhs = "ss\"",        rhs = "cc\"\"<Esc>P" },
+    { modes = { "v" },                lhs = "s\"",         rhs = "c\"\"<Esc>P" },
 
     -- fixes
-    { modes = { "n", "o", "x" }, lhs = "ci",         rhs = "ci" },
-    { modes = { "n", "o", "x" }, lhs = "yi",         rhs = "yi" },
-    { modes = { "n", "o", "x" }, lhs = "vi",         rhs = "vi" },
-    { modes = { "n", "o", "x" }, lhs = "gd",         rhs = "gd" },
-    { modes = { "n", "o", "x" }, lhs = "di",         rhs = "\"_di" },
-
+    { modes = { "n", "o", "x" },      lhs = "ci",         rhs = "ci" },
+    { modes = { "n", "o", "x" },      lhs = "yi",         rhs = "\"+yi" },
+    { modes = { "n", "o", "x" },      lhs = "vi",         rhs = "vi" },
+    { modes = { "n", "o", "x" },      lhs = "di",         rhs = "\"_di" },
+    { modes = { "n", "o", "x" },      lhs = "ca",         rhs = "ca" },
+    { modes = { "n", "o", "x" },      lhs = "ya",         rhs = "\"+ya" },
+    { modes = { "n", "o", "x" },      lhs = "va",         rhs = "va" },
+    { modes = { "n", "o", "x" },      lhs = "da",         rhs = "\"_da" },
+    { modes = { "n", "o", "x" },      lhs = "gd",         rhs = "gd" },
     -- Undo/redo
-    { modes = { "n" },           lhs = "l",          rhs = "u" },
-    { modes = { "n" },           lhs = "gz",         rhs = "U" },
-    { modes = { "n" },           lhs = "L",          rhs = "<C-r>" },
+    { modes = { "n" },                lhs = "l",          rhs = "u" },
+    { modes = { "n" },                lhs = "gz",         rhs = "U" },
+    { modes = { "n" },                lhs = "L",          rhs = "<C-r>" },
 
     -- insert/append (T)
-    { modes = { "n" },           lhs = "j",          rhs = "i" },
-    { modes = { "n" },           lhs = "J",          rhs = "I" },
-    { modes = { "n" },           lhs = "b",          rhs = "a" },
-    { modes = { "n" },           lhs = "B",          rhs = "A" },
+    { modes = { "n" },                lhs = "j",          rhs = "i" },
+    { modes = { "n" },                lhs = "J",          rhs = "I" },
+    { modes = { "n" },                lhs = "b",          rhs = "a" },
+    { modes = { "n" },                lhs = "B",          rhs = "A" },
 
     -- Insert in Visual mode
-    { modes = { "v" },           lhs = "J",          rhs = "I" },
-    { modes = { "v" },           lhs = "B",          rhs = "A" },
+    { modes = { "v" },                lhs = "J",          rhs = "I" },
+    { modes = { "v" },                lhs = "B",          rhs = "A" },
 
     -- Search
-    { modes = { "n", "o", "x" }, lhs = "k",          rhs = "n" },
-    { modes = { "n", "o", "x" }, lhs = "K",          rhs = "N" },
+    { modes = { "n", "o", "x" },      lhs = "k",          rhs = "n" },
+    { modes = { "n", "o", "x" },      lhs = "K",          rhs = "N" },
 
     -- 'til
     -- Breaks diffput
-    { modes = { "n", "o", "x" }, lhs = "_",          rhs = "t" },
-    { modes = { "n", "o", "x" }, lhs = "_",          rhs = "T" },
+    { modes = { "n", "o", "x" },      lhs = "_",          rhs = "t" },
+    { modes = { "n", "o", "x" },      lhs = "_",          rhs = "T" },
 
 
     -- Folds
-    { modes = { "n", "x" },      lhs = "z",          rhs = "z" },
-    { modes = { "n", "x" },      lhs = "z",          rhs = "zb",     desc = "Scroll line and cursor to bottom" },
-    { modes = { "n", "x" },      lhs = "zu",         rhs = "zk",     desc = "Move up to fold" },
-    { modes = { "n", "x" },      lhs = "ze",         rhs = "zj",     desc = "Move down to fold" },
+    { modes = { "n", "x" },           lhs = "z",          rhs = "z" },
+    { modes = { "n", "x" },           lhs = "z",          rhs = "zb",     desc = "Scroll line and cursor to bottom" },
+    { modes = { "n", "x" },           lhs = "zu",         rhs = "zk",     desc = "Move up to fold" },
+    { modes = { "n", "x" },           lhs = "ze",         rhs = "zj",     desc = "Move down to fold" },
 
     -- Fix diffput (t for 'transfer')
-    { modes = { "n" },           lhs = "dt",         rhs = "dp",     desc = "diffput (t for 'transfer')" },
+    { modes = { "n" },                lhs = "dt",         rhs = "dp",     desc = "diffput (t for 'transfer')" },
 
 
     -- Misc overridden keys must be prefixed with g
-    { modes = { "n", "x" },      lhs = "gX",         rhs = "X" },
-    { modes = { "n", "x" },      lhs = "gU",         rhs = "U" },
-    { modes = { "n", "x" },      lhs = "gQ",         rhs = "Q" },
-    { modes = { "n", "x" },      lhs = "gK",         rhs = "K" },
+    { modes = { "n", "x" },           lhs = "gX",         rhs = "X" },
+    { modes = { "n", "x" },           lhs = "gU",         rhs = "U" },
+    { modes = { "n", "x" },           lhs = "gQ",         rhs = "Q" },
+    { modes = { "n", "x" },           lhs = "gK",         rhs = "K" },
     -- extra alias
-    { modes = { "n" },           lhs = "gh",         rhs = "K" },
-    { modes = { "x" },           lhs = "gh",         rhs = "K" },
+    { modes = { "n" },                lhs = "gh",         rhs = "K" },
+    { modes = { "x" },                lhs = "gh",         rhs = "K" },
 
     -- Window navigation
-    { modes = { "n" },           lhs = "<C-w>n",     rhs = "<C-w>h" },
-    { modes = { "n" },           lhs = "<C-w>u",     rhs = "<C-w>k" },
-    { modes = { "n" },           lhs = "<C-w>e",     rhs = "<C-w>j" },
-    { modes = { "n" },           lhs = "<C-w>i",     rhs = "<C-w>l" },
-    { modes = { "n" },           lhs = "<C-w>N",     rhs = "<C-w>H" },
-    { modes = { "n" },           lhs = "<C-w>U",     rhs = "<C-w>K" },
-    { modes = { "n" },           lhs = "<C-w>E",     rhs = "<C-w>J" },
-    { modes = { "n" },           lhs = "<C-w>I",     rhs = "<C-w>L" },
-    { modes = { "t", "i" },      lhs = "<C-w><ESC>", rhs = "<C-\\><C-n>" },
+    { modes = { "n" },                lhs = "<C-w>n",     rhs = "<C-w>h" },
+    { modes = { "n" },                lhs = "<C-w>u",     rhs = "<C-w>k" },
+    { modes = { "n" },                lhs = "<C-w>e",     rhs = "<C-w>j" },
+    { modes = { "n" },                lhs = "<C-w>i",     rhs = "<C-w>l" },
+    { modes = { "n" },                lhs = "<C-w>N",     rhs = "<C-w>H" },
+    { modes = { "n" },                lhs = "<C-w>U",     rhs = "<C-w>K" },
+    { modes = { "n" },                lhs = "<C-w>E",     rhs = "<C-w>J" },
+    { modes = { "n" },                lhs = "<C-w>I",     rhs = "<C-w>L" },
+    { modes = { "t", "i" },           lhs = "<C-w><ESC>", rhs = "<C-\\><C-n>" },
     -- Disable spawning empty buffer
-    { modes = { "n" },           lhs = "<C-w><C-n>", rhs = "<nop>" },
+    { modes = { "n" },                lhs = "<C-w><C-n>", rhs = "<nop>" },
 
     --other
-    { modes = { "n" },           lhs = "<M-d>",      rhs = "<cmd>lua vim.diagnostic.open_float()<CR>" },
-    { modes = { "n" },           lhs = ";",          rhs = "q:" },
+    { modes = { "n" },                lhs = "<M-d>",      rhs = "<cmd>lua vim.diagnostic.open_float()<CR>" },
+    { modes = { "n" },                lhs = ";",          rhs = "q:" },
 }
 
 function colemak_apply()
@@ -170,6 +235,8 @@ vim.cmd("syntax on")
 vim.cmd("filetype on")
 vim.cmd("filetype indent on")
 vim.cmd("set t_Co=256")
+vim.cmd("set showcmd!")
+
 vim.cmd("command B buffers")
 -- line numbers
 vim.opt.number         = true
@@ -205,6 +272,5 @@ vim.opt.softtabstop = 2
 vim.opt.cindent     = true
 
 ---------   theme  ---------
-vim.o.background = "dark"
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
