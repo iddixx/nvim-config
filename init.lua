@@ -358,6 +358,7 @@ require('packer').startup(function(use)
     use "rktjmp/lush.nvim"
     use 'sphamba/smear-cursor.nvim' -- smooth cursor
     use 'karb94/neoscroll.nvim'     -- smooth scroll
+    use 'markonm/traces.vim'        -- highlights patterns in command mode
 end)
 -- gui settings
 
