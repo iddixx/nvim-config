@@ -370,6 +370,7 @@ end
 local Plug = vim.fn['plug#']
 vim.call('plug#begin')
 
+Plug 'p00f/alabaster.nvim' -- i like this theme
 Plug 'estheruary/nvim-colorscheme-lavender' -- use with ai bg
 Plug 'fenetikm/falcon'                      -- use with nullscapes bg
 Plug 'wincent/base16-nvim'
@@ -576,7 +577,7 @@ end
 require('lualine').setup {
     options = {
         icons_enabled = false,
-        theme = "auto",
+        theme = rem_theme,
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
@@ -631,9 +632,10 @@ vim.g.komau_italic = false
 --vim.cmd.colorscheme("base16-stella") -- use with purple anime girl bg
 --vim.cmd.colorscheme("falcon") -- use with nullspaces
 --vim.cmd.colorscheme("yuyuko") -- use with rem bg
-vim.cmd.colorscheme("base16-everforest-dark-hard") -- use with komari bg
+--vim.cmd.colorscheme("base16-everforest-dark-hard") -- use with komari bg
 --vim.cmd.colorscheme("komau") -- cool monochrome theme
 --vim.cmd.colorscheme("plain") -- other cool monochrome theme
+vim.cmd.colorscheme("alabaster") -- i like this theme
 
 --omnisharp
 vim.g.OmniSharp_server_path         = 'C:\\Users\\ondar\\!language_servers\\Omnisharp\\OmniSharp.exe'
