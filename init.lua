@@ -370,7 +370,7 @@ end
 local Plug = vim.fn['plug#']
 vim.call('plug#begin')
 
-Plug 'p00f/alabaster.nvim' -- i like this theme
+Plug 'iddixx/alabaster-bold.nvim' -- my fork of p00f/alabaster.nvim
 Plug 'estheruary/nvim-colorscheme-lavender' -- use with ai bg
 Plug 'fenetikm/falcon'                      -- use with nullscapes bg
 Plug 'wincent/base16-nvim'
