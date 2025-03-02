@@ -242,7 +242,6 @@ require('packer').startup(function(use)
 
     --syntax highlight--
     use 'octol/vim-cpp-enhanced-highlight'
-    use 'jlcrochet/vim-cs'
     use 'gleam-lang/gleam.vim'
 
     --statusline and buffer line--
