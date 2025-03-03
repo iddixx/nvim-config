@@ -16,17 +16,16 @@ Getting servername:
 local colemak_mappings = {
     -- Up/down/left/right
     { modes = { "n", "o", "x" }, lhs = "n",          rhs = "h",      desc = "Left (h)" },
-    { modes = { "n", "o", "x" }, lhs = "u",          rhs = "gk",     desc = "Up (k)" },
-    { modes = { "n", "o", "x" }, lhs = "e",          rhs = "gj",     desc = "Down (j)" },
+    { modes = { "n", "o", "x" }, lhs = "u",          rhs = "gk",     desc = "Visual Up (k)" },
+    { modes = { "n", "o", "x" }, lhs = "e",          rhs = "gj",     desc = "Visual Down (j)" },
+    { modes = { "n", "o", "x" }, lhs = "gu",         rhs = "k",      desc = "Up (k)" },
+    { modes = { "n", "o", "x" }, lhs = "ge",         rhs = "j",      desc = "Down (j)" },
     { modes = { "n", "o", "x" }, lhs = "i",          rhs = "l",      desc = "Right (l)" },
+
     { modes = { "n", "o", "x" }, lhs = "N",          rhs = "H",      desc = "Left (h)" },
     { modes = { "n", "o", "x" }, lhs = "U",          rhs = "K",      desc = "Up (k)" },
     { modes = { "n", "o", "x" }, lhs = "E",          rhs = "J",      desc = "Down (j)" },
     { modes = { "n", "o", "x" }, lhs = "I",          rhs = "L",      desc = "Right (l)" },
-
-    -- Jumplist navigation
-    { modes = { "n" },           lhs = "<C-u>",      rhs = "<C-i>",  desc = "Jumplist forward" },
-    { modes = { "n" },           lhs = "<C-e>",      rhs = "<C-o>",  desc = "Jumplist forward" },
 
     -- Word left/right
     { modes = { "n", "x" },      lhs = "a",          rhs = "b",      desc = "Word back" },
@@ -36,30 +35,27 @@ local colemak_mappings = {
 
     -- Braces & Brackets movement
     { modes = { "n", "o", "x" },      lhs = "x",          rhs = "%" },
-    { modes = { "n", "o", "x" },      lhs = ",c",         rhs = "[{" },
-    { modes = { "n", "o", "x" },      lhs = ".c",         rhs = "]}" },
-    { modes = { "n", "o", "x" },      lhs = ",b",         rhs = "[(" },
-    { modes = { "n", "o", "x" },      lhs = ".b",         rhs = "])" },
 
     -- End of word left/right
     { modes = { "n", "o", "x" },      lhs = "N",          rhs = "ge",     desc = "End of word back" },
-    { modes = { "n", "o", "x" },      lhs = "<M-n>",      rhs = "gE",     desc = "End of WORD back" },
+    { modes = { "n", "o", "x" },      lhs = "<C-n>",      rhs = "gE",     desc = "End of WORD back" },
     { modes = { "n", "o", "x" },      lhs = "I",          rhs = "e",      desc = "End of word forward" },
-    { modes = { "n", "o", "x" },      lhs = "<M-i>",      rhs = "E",      desc = "End of WORD forward" },
+    { modes = { "n", "o", "x" },      lhs = "<C-i>",      rhs = "E",      desc = "End of WORD forward" },
 
     -- Move visual replace from      'r' to 'R'
     { modes = { "o", "v" },           lhs = "R",          rhs = "r",      desc = "Replace" },
 
     -- Copy/paste/delete/cut
-    { modes = { "n", "o", "x", "v" }, lhs = "y",          rhs = "y" },
-    { modes = { "n", "o", "x", "v" }, lhs = "p",          rhs = "p" },
+    { modes = { "n", "o", "x", "v" }, lhs = "y",          rhs = "\"+y" },
+    { modes = { "n", "o", "x", "v" }, lhs = "p",          rhs = "\"+p" },
     { modes = { "n", "o", "x", "v" }, lhs = "d",          rhs = "\"_d" },
     { modes = { "n", "o", "x" },      lhs = "dc",         rhs = "\"_x" },
+    { modes = { "n", "o", "x" },      lhs = "dC",         rhs = "\"_X" },
     { modes = { "n", "o", "x" },      lhs = "dd",         rhs = "\"_dd" },
 
-    -- Surround text
+    -- Surround text --
 
-    -- Brackets
+    -- Surround with brackets
     { modes = { "n", "o", "x" },      lhs = "siw)",       rhs = "ciw()<Esc>P" },
     { modes = { "n", "o", "x" },      lhs = "saw)",       rhs = "caw()<Esc>P" },
     { modes = { "n", "o", "x" },      lhs = "siW)",       rhs = "ciW()<Esc>P" },
@@ -71,7 +67,7 @@ local colemak_mappings = {
     { modes = { "n", "o", "x" },      lhs = "saW(",       rhs = "caW()<Esc>P" },
     { modes = { "v" },                lhs = "s(",         rhs = "c()<Esc>P" },
 
-    -- Curly Braces
+    -- Surround with curly braces
     { modes = { "n", "o", "x" },      lhs = "siw}",       rhs = "ciw{}<Esc>P" },
     { modes = { "n", "o", "x" },      lhs = "saw}",       rhs = "caw{}<Esc>P" },
     { modes = { "n", "o", "x" },      lhs = "siW}",       rhs = "ciW{}<Esc>P" },
@@ -83,7 +79,7 @@ local colemak_mappings = {
     { modes = { "n", "o", "x" },      lhs = "saW{",       rhs = "caW{}<Esc>P" },
     { modes = { "v" },                lhs = "s{",         rhs = "c{}<Esc>P" },
 
-    -- Square Braces
+    -- Surround with square braces
     { modes = { "n", "o", "x" },      lhs = "siw]",       rhs = "ciw[]<Esc>P" },
     { modes = { "n", "o", "x" },      lhs = "saw]",       rhs = "caw[]<Esc>P" },
     { modes = { "n", "o", "x" },      lhs = "siW]",       rhs = "ciW[]<Esc>P" },
@@ -95,7 +91,7 @@ local colemak_mappings = {
     { modes = { "n", "o", "x" },      lhs = "saW[",       rhs = "caW[]<Esc>P" },
     { modes = { "v" },                lhs = "s[",         rhs = "c[]<Esc>P" },
 
-    -- Angle Brackets
+    -- Surround with angle brackets
     { modes = { "n", "o", "x" },      lhs = "siw>",       rhs = "ciw<><Esc>P" },
     { modes = { "n", "o", "x" },      lhs = "saw>",       rhs = "caw<><Esc>P" },
     { modes = { "n", "o", "x" },      lhs = "siW>",       rhs = "ciW<><Esc>P" },
@@ -107,14 +103,14 @@ local colemak_mappings = {
     { modes = { "n", "o", "x" },      lhs = "saW<",       rhs = "caW<><Esc>P" },
     { modes = { "v" },                lhs = "s<",         rhs = "c<><Esc>P" },
 
-    -- Single Quotes
+    -- Surround with single quotes
     { modes = { "n", "o", "x" },      lhs = "siw\'",       rhs = "ciw\'\'<Esc>P" },
     { modes = { "n", "o", "x" },      lhs = "saw\'",       rhs = "caw\'\'<Esc>P" },
     { modes = { "n", "o", "x" },      lhs = "siW\'",       rhs = "ciW\'\'<Esc>P" },
     { modes = { "n", "o", "x" },      lhs = "saW\'",       rhs = "caW\'\'<Esc>P" },
     { modes = { "v" },                lhs = "s\'",         rhs = "c\'\'<Esc>P" },
 
-    -- Double Quotes
+    -- Surround with double quotes
     { modes = { "n", "o", "x" },      lhs = "siw\"",       rhs = "ciw\"\"<Esc>P" },
     { modes = { "n", "o", "x" },      lhs = "saw\"",       rhs = "caw\"\"<Esc>P" },
     { modes = { "n", "o", "x" },      lhs = "siW\"",       rhs = "ciW\"\"<Esc>P" },
@@ -123,7 +119,7 @@ local colemak_mappings = {
     { modes = { "v" },                lhs = "s\"",         rhs = "c\"\"<Esc>P" },
 
     -- fixes
-    { modes = { "n", "o", "x" },      lhs = "ci",         rhs = "ci" },
+    { modes = { "n", "o", "x" },      lhs = "ci",         rhs = "\"+ci" },
     { modes = { "n", "o", "x" },      lhs = "yi",         rhs = "\"+yi" },
     { modes = { "n", "o", "x" },      lhs = "vi",         rhs = "vi" },
     { modes = { "n", "o", "x" },      lhs = "di",         rhs = "\"_di" },
@@ -132,6 +128,7 @@ local colemak_mappings = {
     { modes = { "n", "o", "x" },      lhs = "va",         rhs = "va" },
     { modes = { "n", "o", "x" },      lhs = "da",         rhs = "\"_da" },
     { modes = { "n", "o", "x" },      lhs = "gd",         rhs = "gd" },
+
     -- Undo/redo
     { modes = { "n" },                lhs = "l",          rhs = "u" },
     { modes = { "n" },                lhs = "gz",         rhs = "U" },
@@ -151,31 +148,6 @@ local colemak_mappings = {
     { modes = { "n", "o", "x" },      lhs = "k",          rhs = "n" },
     { modes = { "n", "o", "x" },      lhs = "K",          rhs = "N" },
 
-    -- 'til
-    -- Breaks diffput
-    { modes = { "n", "o", "x" },      lhs = "_",          rhs = "t" },
-    { modes = { "n", "o", "x" },      lhs = "_",          rhs = "T" },
-
-
-    -- Folds
-    { modes = { "n", "x" },           lhs = "z",          rhs = "z" },
-    { modes = { "n", "x" },           lhs = "z",          rhs = "zb",     desc = "Scroll line and cursor to bottom" },
-    { modes = { "n", "x" },           lhs = "zu",         rhs = "zk",     desc = "Move up to fold" },
-    { modes = { "n", "x" },           lhs = "ze",         rhs = "zj",     desc = "Move down to fold" },
-
-    -- Fix diffput (t for 'transfer')
-    { modes = { "n" },                lhs = "dt",         rhs = "dp",     desc = "diffput (t for 'transfer')" },
-
-
-    -- Misc overridden keys must be prefixed with g
-    { modes = { "n", "x" },           lhs = "gX",         rhs = "X" },
-    { modes = { "n", "x" },           lhs = "gU",         rhs = "U" },
-    { modes = { "n", "x" },           lhs = "gQ",         rhs = "Q" },
-    { modes = { "n", "x" },           lhs = "gK",         rhs = "K" },
-    -- extra alias
-    { modes = { "n" },                lhs = "gh",         rhs = "K" },
-    { modes = { "x" },                lhs = "gh",         rhs = "K" },
-
     -- Window navigation
     { modes = { "n" },                lhs = "<C-w>n",     rhs = "<C-w>h" },
     { modes = { "n" },                lhs = "<C-w>u",     rhs = "<C-w>k" },
@@ -186,8 +158,6 @@ local colemak_mappings = {
     { modes = { "n" },                lhs = "<C-w>E",     rhs = "<C-w>J" },
     { modes = { "n" },                lhs = "<C-w>I",     rhs = "<C-w>L" },
     { modes = { "t", "i" },           lhs = "<C-w><ESC>", rhs = "<C-\\><C-n>" },
-    -- Disable spawning empty buffer
-    { modes = { "n" },                lhs = "<C-w><C-n>", rhs = "<nop>" },
 
     --other
     { modes = { "n" },                lhs = "<M-d>",      rhs = "<cmd>lua vim.diagnostic.open_float()<CR>" },
