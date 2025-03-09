@@ -120,7 +120,9 @@ local colemak_mappings = {
 
     -- fixes
     { modes = { "n", "o", "x" },      lhs = "ci",         rhs = "\"+ci" },
+    { modes = { "n", "o", "x" },      lhs = "cc",         rhs = "\"+cc" },
     { modes = { "n", "o", "x" },      lhs = "yi",         rhs = "\"+yi" },
+    { modes = { "n", "o", "x" },      lhs = "yy",         rhs = "\"+yy" },
     { modes = { "n", "o", "x" },      lhs = "vi",         rhs = "vi" },
     { modes = { "n", "o", "x" },      lhs = "di",         rhs = "\"_di" },
     { modes = { "n", "o", "x" },      lhs = "ca",         rhs = "ca" },
