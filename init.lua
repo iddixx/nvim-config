@@ -231,12 +231,31 @@ require('packer').startup(function(use)
     use 'gleam-lang/gleam.vim'
 
     --statusline and buffer line--
+    use 'nvim-lualine/lualine.nvim'
+
     use
     {
-        'nvim-lualine/lualine.nvim',
+        'xiyaowong/transparent.nvim', 
+        config = function()
+            require("transparent").setup({
+              -- table: default groups
+              groups = {
+              --'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
+              --'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
+              --'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
+              --'SignColumn', 'CursorLine', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
+              --'EndOfBuffer',
+              }, -- uncomment to get transparent
+              -- table: additional groups that should be cleared
+              extra_groups = {},
+              -- table: groups you don't want to clear
+              exclude_groups = {},
+              -- function: code to be executed after highlight groups are cleared
+              -- Also the user event "TransparentClear" will be triggered
+              on_clear = function() end,
+            })
+        end
     }
-
-    use 'tribela/vim-transparent'  --transparent bg(i turning it off sometimes)
 
     --fun--
     use --shows keys lol
