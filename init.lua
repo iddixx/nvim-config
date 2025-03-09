@@ -491,7 +491,7 @@ local rem_theme = {
     },
     visual = {
         a = { bg = rem_colors.gray, fg = rem_colors.magenta, gui = 'bold' },
-        b = { bg = rem_colors.darkwhite, fg = rem_colors.blue },
+        b = { bg = rem_colors.white, fg = rem_colors.blue },
         c = { bg = nil, fg = rem_colors.white },
     },
     replace = {
@@ -559,6 +559,7 @@ function generate_random_text(text)
     result = string.sub(result, 1, (string.len(result) - 1)) -- removing last space
     return result
 end
+
 require('lualine').setup {
     options = {
         icons_enabled = false,
@@ -580,12 +581,12 @@ require('lualine').setup {
         }
     },
     sections = {
-        lualine_a = { generate_random_text },
-        lualine_b = { generate_random_text },
-        lualine_c = { generate_random_text },
-        lualine_x = { generate_random_text },
-        lualine_y = { generate_random_text },
-        lualine_z = { generate_random_text }
+        lualine_a = { 'location', 'selectioncount' },
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = { 'encoding' },
+        lualine_z = { 'filename' }
     },
     inactive_sections = {
       --lualine_a = {},
@@ -595,14 +596,7 @@ require('lualine').setup {
       --lualine_y = {},
       --lualine_z = {}
     },
-    tabline = {
-        lualine_a = { 'location' },
-        lualine_b = { 'filename' },
-        lualine_c = {},
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = { 'selectioncount' }
-    },
+    tabline = {},
     winbar = {},
     inactive_winbar = {},
     extensions = {}
