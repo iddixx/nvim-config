@@ -49,6 +49,7 @@ local colemak_mappings = {
     { modes = { "n", "o", "x", "v" }, lhs = "y",          rhs = "\"+y" },
     { modes = { "n", "o", "x", "v" }, lhs = "p",          rhs = "\"+p" },
     { modes = { "n", "o", "x", "v" }, lhs = "d",          rhs = "\"_d" },
+    { modes = { "n", "o", "x" },      lhs = "c",          rhs = "\"+c" },
     { modes = { "n", "o", "x" },      lhs = "dc",         rhs = "\"_x" },
     { modes = { "n", "o", "x" },      lhs = "dC",         rhs = "\"_X" },
     { modes = { "n", "o", "x" },      lhs = "dd",         rhs = "\"_dd" },
