@@ -357,6 +357,21 @@ end)
 
 if vim.g.neovide then
     vim.o.guifont = "Iosevka Fixed SS14:h18"
+    vim.g.neovide_hide_mouse_when_typing = true
+    vim.g.neovide_cursor_animation_length = 0.08
+
+    vim.g.neovide_scale_factor = 1.0
+    local scale_percentage = 0.1
+
+    local function change_scale_factor(delta)
+      vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + delta
+    end
+    vim.keymap.set("n", "<C-=>", function()
+      change_scale_factor(scale_percentage)
+    end)
+    vim.keymap.set("n", "<C-->", function()
+      change_scale_factor(-scale_percentage)
+    end)
 end
 
 -- vim-plug (i use it only for themes lmao)
@@ -374,7 +389,7 @@ vim.call('plug#end')
 
 --[[ Plugins Setup ]]
 
-require("smear_cursor").toggle()
+--require("smear_cursor").toggle()
 
 neoscroll = require('neoscroll')
 
