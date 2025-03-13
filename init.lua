@@ -465,9 +465,6 @@ if vim.uv.os_uname().sysname == "Windows_NT" then
     vim.api.nvim_exec('language en_US', true)
 end
 
--- gnu assembly syntax highlighting
-vim.opt.ft          = 'gas'
-
 -- tab options
 vim.opt.expandtab   = true
 vim.opt.tabstop     = 4
