@@ -14,13 +14,14 @@ Getting servername:
 -- based on https://github.com/linduxed/colemak.nvim
 
 local colemak_mappings = {
+
     -- Up/down/left/right
-    { modes = { "n", "o", "x" }, lhs = "n",          rhs = "h",      desc = "Left (h)" },
-    { modes = { "n", "o", "x" }, lhs = "u",          rhs = "gk",     desc = "Visual Up (k)" },
-    { modes = { "n", "o", "x" }, lhs = "e",          rhs = "gj",     desc = "Visual Down (j)" },
-    { modes = { "n", "o", "x" }, lhs = "gu",         rhs = "k",      desc = "Up (k)" },
-    { modes = { "n", "o", "x" }, lhs = "ge",         rhs = "j",      desc = "Down (j)" },
-    { modes = { "n", "o", "x" }, lhs = "i",          rhs = "l",      desc = "Right (l)" },
+    { modes = { "n", "v", "o", "x" }, lhs = "n",          rhs = "h",      desc = "Left (h)" },
+    { modes = { "n", "v", "o", "x" }, lhs = "u",          rhs = "gk",     desc = "Visual Up (k)" },
+    { modes = { "n", "v", "o", "x" }, lhs = "e",          rhs = "gj",     desc = "Visual Down (j)" },
+    { modes = { "n", "v", "o", "x" }, lhs = "gu",         rhs = "k",      desc = "Up (k)" },
+    { modes = { "n", "v", "o", "x" }, lhs = "ge",         rhs = "j",      desc = "Down (j)" },
+    { modes = { "n", "v", "o", "x" }, lhs = "i",          rhs = "l",      desc = "Right (l)" },
 
     { modes = { "n", "o", "x" }, lhs = "N",          rhs = "H",      desc = "Left (h)" },
     { modes = { "n", "o", "x" }, lhs = "U",          rhs = "K",      desc = "Up (k)" },
