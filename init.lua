@@ -17,8 +17,8 @@ local colemak_mappings = {
 
     -- Up/down/left/right
     { modes = { "n", "v", "o", "x" }, lhs = "n",          rhs = "h",      desc = "Left (h)" },
-    { modes = { "n", "v", "o", "x" }, lhs = "u",          rhs = "gk",     desc = "Visual Up (k)" },
-    { modes = { "n", "v", "o", "x" }, lhs = "e",          rhs = "gj",     desc = "Visual Down (j)" },
+    { modes = { "n", "v", "o", "x" }, lhs = "u",          rhs = "gk",     desc = "Visual Up (gk)" },
+    { modes = { "n", "v", "o", "x" }, lhs = "e",          rhs = "gj",     desc = "Visual Down (gj)" },
     { modes = { "n", "v", "o", "x" }, lhs = "gu",         rhs = "k",      desc = "Up (k)" },
     { modes = { "n", "v", "o", "x" }, lhs = "ge",         rhs = "j",      desc = "Down (j)" },
     { modes = { "n", "v", "o", "x" }, lhs = "i",          rhs = "l",      desc = "Right (l)" },
@@ -27,6 +27,9 @@ local colemak_mappings = {
     { modes = { "n", "o", "x" }, lhs = "U",          rhs = "K",      desc = "Up (k)" },
     { modes = { "n", "o", "x" }, lhs = "E",          rhs = "J",      desc = "Down (j)" },
     { modes = { "n", "o", "x" }, lhs = "I",          rhs = "L",      desc = "Right (l)" },
+
+    { modes = { "n", "o", "x" }, lhs = "<C-u>",          rhs = "<C-y>",      desc = "Up (k)" },
+    { modes = { "n", "o", "x" }, lhs = "<C-e>",          rhs = "<C-e>",      desc = "Down (j)" },
 
     -- Word left/right
     { modes = { "n", "x" },      lhs = "a",          rhs = "b",      desc = "Word back" },
@@ -348,7 +351,6 @@ require('packer').startup(function(use)
     }
     use "rktjmp/lush.nvim"
     use 'sphamba/smear-cursor.nvim' -- smooth cursor
-    use 'karb94/neoscroll.nvim'     -- smooth scroll
     use 'markonm/traces.vim'        -- highlights patterns in command mode
     if packer_bootstrap then
         require('packer').sync()
@@ -391,40 +393,6 @@ vim.call('plug#end')
 --[[ Plugins Setup ]]
 
 --require("smear_cursor").toggle()
-
-neoscroll = require('neoscroll')
-
-neoscroll.setup({
-    mappings = { -- Keys to be mapped to their corresponding default scrolling animation
-        '<C-u>', '<C-d>',
-        '<C-b>', '<C-f>',
-        '<C-y>', '<C-e>',
-        'zt', 'zz', 'zb'
-    },
-    hide_cursor = true,          -- Hide cursor while scrolling
-    stop_eof = false,            -- Stop at <EOF> when scrolling downwards
-    respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-    cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-    duration_multiplier = 1.0,   -- Global duration multiplier
-    easing = 'linear',           -- Default easing function
-    pre_hook = nil,              -- Function to run before the scrolling animation starts
-    post_hook = nil,             -- Function to run after the scrolling animation ends
-    performance_mode = false,    -- Disable "Performance Mode" on all buffers.
-    ignored_events = {           -- Events ignored while scrolling
-        'WinScrolled', 'CursorMoved'
-    },
-})
-local keymap = {
-    ["<M-u>"] = function() neoscroll.scroll(-1, { move_cursor = false, duration = 30, easing = "cubic" }) end,
-    ["<M-e>"] = function() neoscroll.scroll(1, { move_cursor = false, duration = 30, easing = "cubic" }) end,
-    ["<C-u>"] = function() neoscroll.scroll(-10, { move_cursor = true, duration = 30, easing = "cubic" }) end,
-    ["<C-e>"] = function() neoscroll.scroll(10, { move_cursor = true, duration = 30, easing = "cubic" }) end,
-
-}
-local modes = { 'n', 'v', 'x' }
-for key, func in pairs(keymap) do
-    vim.keymap.set(modes, key, func)
-end
 
 --[[ LSP Setup ]]
 

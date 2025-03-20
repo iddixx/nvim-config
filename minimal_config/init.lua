@@ -14,18 +14,22 @@ Getting servername:
 --[[  colemak layout support  ]] --
 -- based on https://github.com/linduxed/colemak.nvim
 local colemak_mappings = {
+
     -- Up/down/left/right
-    { modes = { "n", "o", "x" }, lhs = "n",          rhs = "h",      desc = "Left (h)" },
-    { modes = { "n", "o", "x" }, lhs = "u",          rhs = "gk",     desc = "Visual Up (k)" },
-    { modes = { "n", "o", "x" }, lhs = "e",          rhs = "gj",     desc = "Visual Down (j)" },
-    { modes = { "n", "o", "x" }, lhs = "gu",         rhs = "k",      desc = "Up (k)" },
-    { modes = { "n", "o", "x" }, lhs = "ge",         rhs = "j",      desc = "Down (j)" },
-    { modes = { "n", "o", "x" }, lhs = "i",          rhs = "l",      desc = "Right (l)" },
+    { modes = { "n", "v", "o", "x" }, lhs = "n",          rhs = "h",      desc = "Left (h)" },
+    { modes = { "n", "v", "o", "x" }, lhs = "u",          rhs = "gk",     desc = "Visual Up (gk)" },
+    { modes = { "n", "v", "o", "x" }, lhs = "e",          rhs = "gj",     desc = "Visual Down (gj)" },
+    { modes = { "n", "v", "o", "x" }, lhs = "gu",         rhs = "k",      desc = "Up (k)" },
+    { modes = { "n", "v", "o", "x" }, lhs = "ge",         rhs = "j",      desc = "Down (j)" },
+    { modes = { "n", "v", "o", "x" }, lhs = "i",          rhs = "l",      desc = "Right (l)" },
 
     { modes = { "n", "o", "x" }, lhs = "N",          rhs = "H",      desc = "Left (h)" },
     { modes = { "n", "o", "x" }, lhs = "U",          rhs = "K",      desc = "Up (k)" },
     { modes = { "n", "o", "x" }, lhs = "E",          rhs = "J",      desc = "Down (j)" },
     { modes = { "n", "o", "x" }, lhs = "I",          rhs = "L",      desc = "Right (l)" },
+
+    { modes = { "n", "o", "x" }, lhs = "<C-u>",          rhs = "<C-y>",      desc = "Up (k)" },
+    { modes = { "n", "o", "x" }, lhs = "<C-e>",          rhs = "<C-e>",      desc = "Down (j)" },
 
     -- Word left/right
     { modes = { "n", "x" },      lhs = "a",          rhs = "b",      desc = "Word back" },
@@ -49,6 +53,7 @@ local colemak_mappings = {
     { modes = { "n", "o", "x", "v" }, lhs = "y",          rhs = "\"+y" },
     { modes = { "n", "o", "x", "v" }, lhs = "p",          rhs = "\"+p" },
     { modes = { "n", "o", "x", "v" }, lhs = "d",          rhs = "\"_d" },
+    { modes = { "n", "o", "x" },      lhs = "c",          rhs = "\"+c" },
     { modes = { "n", "o", "x" },      lhs = "dc",         rhs = "\"_x" },
     { modes = { "n", "o", "x" },      lhs = "dC",         rhs = "\"_X" },
     { modes = { "n", "o", "x" },      lhs = "dd",         rhs = "\"_dd" },
@@ -120,7 +125,9 @@ local colemak_mappings = {
 
     -- fixes
     { modes = { "n", "o", "x" },      lhs = "ci",         rhs = "\"+ci" },
+    { modes = { "n", "o", "x" },      lhs = "cc",         rhs = "\"+cc" },
     { modes = { "n", "o", "x" },      lhs = "yi",         rhs = "\"+yi" },
+    { modes = { "n", "o", "x" },      lhs = "yy",         rhs = "\"+yy" },
     { modes = { "n", "o", "x" },      lhs = "vi",         rhs = "vi" },
     { modes = { "n", "o", "x" },      lhs = "di",         rhs = "\"_di" },
     { modes = { "n", "o", "x" },      lhs = "ca",         rhs = "ca" },
