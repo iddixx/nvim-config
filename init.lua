@@ -446,52 +446,60 @@ vim.opt.cindent     = true
 ---------   theme  ---------
 
 -- lualine
-local rem_colors = {
-    black     = '#000000',
-    white     = '#eeeeee',
-    darkwhite = '#d4d4d4',
-    red       = '#ffa0a0',
-    green     = '#88cf88',
-    blue      = '#78a9ff',
-    magenta   = '#feacd0',
-    cyan      = '#a0bfdf',
-    gray      = '#2f2f2f',
-    darkgray  = '#202020',
-    lightgray = '#434343'
-}
 
-local rem_theme = {
-    normal = {
-        a = { bg = rem_colors.white, fg = rem_colors.blue, gui = 'bold' },
-        b = { bg = rem_colors.darkwhite, fg = rem_colors.blue },
-        c = { bg = nil, fg = rem_colors.white },
-    },
-    insert = {
-        a = { bg = rem_colors.gray, fg = rem_colors.darkwhite, gui = 'bold' },
-        b = { bg = rem_colors.darkwhite, fg = rem_colors.blue },
-        c = { bg = nil, fg = rem_colors.white },
-    },
-    visual = {
-        a = { bg = rem_colors.gray, fg = rem_colors.magenta, gui = 'bold' },
-        b = { bg = rem_colors.white, fg = rem_colors.blue },
-        c = { bg = nil, fg = rem_colors.white },
-    },
-    replace = {
-        a = { bg = rem_colors.gray, fg = rem_colors.magenta, gui = 'bold' },
-        b = { bg = rem_colors.darkwhite, fg = rem_colors.red },
-        c = { bg = nil, fg = rem_colors.white },
-    },
-    command = {
-        a = { bg = rem_colors.blue, fg = rem_colors.magenta, gui = 'bold' },
-        b = { bg = rem_colors.darkwhite, fg = rem_colors.gray },
-        c = { bg = nil, fg = rem_colors.white },
-    },
-    inactive = {
-        a = { bg = rem_colors.gray, fg = rem_colors.magenta, gui = 'bold' },
-        b = { bg = rem_colors.darkwhite, fg = rem_colors.gray, gui = 'bold' },
-        c = { bg = nil, fg = rem_colors.lightgray },
-    },
-}
+
+function get_ramrem_lualine_theme(is_ram_theme)
+    local colors = {
+        black     = '#000000',
+        white     = '#eeeeee',
+        darkwhite = '#d4d4d4',
+        red       = '#ffa0a0',
+        green     = '#88cf88',
+        blue      = '#78a9ff',
+        magenta   = '#feacd0',
+        cyan      = '#a0bfdf',
+        gray      = '#2f2f2f',
+        darkgray  = '#202020',
+        lightgray = '#434343'
+    }
+    if is_ram_theme then
+        colors.blue    = "#fd7dc6" -- e6466a replaces blue color with pink
+        colors.magenta = "#655689" -- 7f6cac makes magenta darker
+    end
+    local theme = {
+        normal = {
+            a = { bg = colors.white, fg = colors.blue, gui = 'bold' },
+            b = { bg = colors.darkwhite, fg = colors.blue },
+            c = { bg = nil, fg = colors.white },
+        },
+        insert = {
+            a = { bg = colors.gray, fg = colors.darkwhite, gui = 'bold' },
+            b = { bg = colors.darkwhite, fg = colors.blue },
+            c = { bg = nil, fg = colors.white },
+        },
+        visual = {
+            a = { bg = colors.gray, fg = colors.magenta, gui = 'bold' },
+            b = { bg = colors.white, fg = colors.blue },
+            c = { bg = nil, fg = colors.white },
+        },
+        replace = {
+            a = { bg = colors.gray, fg = colors.magenta, gui = 'bold' },
+            b = { bg = colors.darkwhite, fg = colors.red },
+            c = { bg = nil, fg = colors.white },
+        },
+        command = {
+            a = { bg = colors.blue, fg = colors.magenta, gui = 'bold' },
+            b = { bg = colors.darkwhite, fg = colors.gray },
+            c = { bg = nil, fg = colors.white },
+        },
+        inactive = {
+            a = { bg = colors.gray, fg = colors.magenta, gui = 'bold' },
+            b = { bg = colors.darkwhite, fg = colors.gray, gui = 'bold' },
+            c = { bg = nil, fg = colors.lightgray },
+        },
+    }
+    return theme
+end
 
 local nf_colors = {
     color3 = '#2c3043',
@@ -545,7 +553,7 @@ end
 require('lualine').setup {
     options = {
         icons_enabled = false,
-        theme = rem_theme,
+        theme = get_ramrem_lualine_theme(false),
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
