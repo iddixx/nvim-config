@@ -204,43 +204,46 @@ function colemak_setup(_)
 end
 
 colemak_setup()
--- packer
+-- pckr
 
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
+local function bootstrap_pckr()
+  local pckr_path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
+
+  if not (vim.uv or vim.loop).fs_stat(pckr_path) then
+    vim.fn.system({
+      'git',
+      'clone',
+      "--filter=blob:none",
+      'https://github.com/lewis6991/pckr.nvim',
+      pckr_path
+    })
   end
-  return false
+
+  vim.opt.rtp:prepend(pckr_path)
 end
 
-local packer_bootstrap = ensure_packer()
+bootstrap_pckr()
 
-vim.cmd [[packadd packer.nvim]]
+local cmd = require('pckr.loader.cmd')
+local event = require('pckr.loader.event')
 
-require('packer').startup(function(use)
-    use 'wbthomason/packer.nvim'
-
-    use 'voldikss/vim-floaterm' --floating terminal
+require('pckr').add({
+    'voldikss/vim-floaterm', --floating terminal
 
     --lsp related stuff--
-    use { 'neoclide/coc.nvim', branch = 'release' }
-    use 'neovim/nvim-lspconfig'
-    use 'OmniSharp/omnisharp-vim'
+    { 'neoclide/coc.nvim', branch = 'release' },
+    'neovim/nvim-lspconfig',
+    'OmniSharp/omnisharp-vim',
 
     --syntax highlight--
-    use 'octol/vim-cpp-enhanced-highlight'
-    use 'gleam-lang/gleam.vim'
+    'octol/vim-cpp-enhanced-highlight',
+    'gleam-lang/gleam.vim',
 
     --statusline and buffer line--
-    use 'nvim-lualine/lualine.nvim'
+    'nvim-lualine/lualine.nvim',
 
-    use
     {
-        'xiyaowong/transparent.nvim', 
+        'xiyaowong/transparent.nvim',
         config = function()
             require("transparent").setup({
               -- table: default groups
@@ -260,18 +263,18 @@ require('packer').startup(function(use)
               on_clear = function() end,
             })
         end
-    }
+    },
 
     --fun--
-    use --shows keys lol
+    --shows keys lol
     {
         "nvzone/showkeys",
         requires = "nvzone/volt",
-        cmd = "ShowkeysToggle",
-    }
+        cond = cmd("ShowkeysToggle"),
+    },
 
     --emacs features--
-    use --compile mode from emacs in neovim
+    --compile mode from emacs in neovim
     {
         "ej-shafran/compile-mode.nvim",
         tag = "v5.*",
@@ -291,9 +294,8 @@ require('packer').startup(function(use)
                 baleia_setup = true,
             }
         end,
-    }
+    },
 
-    use
     {
         "X3eRo0/dired.nvim",
         requires = "MunifTanjim/nui.nvim",
@@ -340,22 +342,27 @@ require('packer').startup(function(use)
                     },
                 })
         end
-    }
-    use
+    },
+
     {
         "windwp/nvim-autopairs",
-        event = "InsertEnter",
+        cond = event("InsertEnter"),
         config = function()
             require("nvim-autopairs").setup {}
         end
-    }
-    use "rktjmp/lush.nvim"
-    use 'sphamba/smear-cursor.nvim' -- smooth cursor
-    use 'markonm/traces.vim'        -- highlights patterns in command mode
-    if packer_bootstrap then
-        require('packer').sync()
-    end
-end)
+    },
+    "rktjmp/lush.nvim",
+    'sphamba/smear-cursor.nvim', -- smooth cursor
+    'markonm/traces.vim',        -- highlights patterns in command mode
+
+    -- [[ Themes ]] -- 
+    'iddixx/alabaster-bold.nvim',           -- my fork of p00f/alabaster.nvim
+    'estheruary/nvim-colorscheme-lavender', -- use with ai bg
+    'fenetikm/falcon',                      -- use with nullscapes bg
+    'wincent/base16-nvim',
+    'ntk148v/komau.vim',
+    'andreypopp/vim-colors-plain',
+})
 -- gui settings
 
 if vim.g.neovide then
@@ -377,18 +384,6 @@ if vim.g.neovide then
     end)
 end
 
--- vim-plug (i use it only for themes lmao)
-local Plug = vim.fn['plug#']
-vim.call('plug#begin')
-
-Plug 'iddixx/alabaster-bold.nvim' -- my fork of p00f/alabaster.nvim
-Plug 'estheruary/nvim-colorscheme-lavender' -- use with ai bg
-Plug 'fenetikm/falcon'                      -- use with nullscapes bg
-Plug 'wincent/base16-nvim'
-Plug 'ntk148v/komau.vim'
-Plug 'andreypopp/vim-colors-plain'
-
-vim.call('plug#end')
 
 --[[ Plugins Setup ]]
 
