@@ -364,6 +364,7 @@ vim.cmd("set showcmd!")
 -- command aliases
 vim.cmd("command B buffers")
 vim.cmd("command C below Compile")
+vim.cmd("command W wincmd w")
 vim.cmd("command O Oil")
 
 -- line numbers
