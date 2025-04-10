@@ -213,6 +213,9 @@ vim.cmd("filetype on")
 vim.cmd("filetype indent on")
 vim.cmd("set t_Co=256")
 vim.cmd("set showcmd!")
+-- vim.cmd("au VimLeave * set guicursor=a:hor100") -- for underline
+vim.cmd("au VimLeave * set guicursor=a:ver100") -- for beam cursor
+-- vim.cmd("au VimLeave * set guicursor=a:block" ) -- for block(you maybe wont need it)
 
 vim.cmd("command B buffers")
 -- line numbers

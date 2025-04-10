@@ -382,6 +382,9 @@ vim.cmd("filetype on")
 vim.cmd("filetype indent on")
 vim.cmd("set t_Co=256")
 vim.cmd("set showcmd!")
+-- vim.cmd("au VimLeave * set guicursor=a:hor100") -- for underline
+vim.cmd("au VimLeave * set guicursor=a:ver100") -- for beam cursor
+-- vim.cmd("au VimLeave * set guicursor=a:block" ) -- for block(you maybe wont need it)
 
 -- command aliases
 vim.cmd("command B buffers")
@@ -602,7 +605,7 @@ vim.g.floaterm_keymap_kill   = '<Space>tk'
 
 
 --[[ coc.nvim ]]
-vim.g.coc_global_extensions = { 'coc-discord-rpc',
+vim.g.coc_global_extensions = { 'coc-clangd', 'coc-discord-rpc',
     'coc-cmake',  'coc-highlight', 'coc-tabnine' }
 -- Some servers have issues with backup files, see #649
 vim.opt.backup = false
