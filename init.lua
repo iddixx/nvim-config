@@ -168,6 +168,7 @@ local colemak_mappings = {
     --other
     { modes = { "n" },                lhs = "<M-d>",      rhs = "<cmd>lua vim.diagnostic.open_float()<CR>" },
     { modes = { "n" },                lhs = ";",          rhs = "q:" },
+    { modes = { "n" },                lhs = "g|",         rhs = "g~" },
 }
 
 function colemak_apply()
