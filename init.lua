@@ -31,10 +31,10 @@ local colemak_mappings = {
     { modes = { "n", "o", "x" }, lhs = "<C-e>",          rhs = "<C-e>",      desc = "Down (j)" },
 
     -- Word left/right
-    { modes = { "n", "x" },      lhs = "a",          rhs = "b",      desc = "Word back" },
-    { modes = { "n", "x" },      lhs = "t",          rhs = "w",      desc = "Word forward" },
-    { modes = { "n", "v" },      lhs = "A",          rhs = "B",      desc = "WORD back" },
-    { modes = { "n", "v" },      lhs = "T",          rhs = "W",      desc = "WORD forward" },
+    { modes = { "n", "v", "o", "x" },      lhs = "a",          rhs = "b",      desc = "Word back" },
+    { modes = { "n", "v", "o", "x" },      lhs = "t",          rhs = "w",      desc = "Word forward" },
+    { modes = { "n", "v", "o", "x" },      lhs = "A",          rhs = "B",      desc = "WORD back" },
+    { modes = { "n", "v", "o", "x" },      lhs = "T",          rhs = "W",      desc = "WORD forward" },
 
     -- Braces & Brackets movement
     { modes = { "n", "o", "x" },      lhs = "x",          rhs = "%" },
