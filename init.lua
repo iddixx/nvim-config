@@ -57,71 +57,6 @@ local colemak_mappings = {
     { modes = { "n", "o", "x" },      lhs = "dC",         rhs = "\"_X" },
     { modes = { "n", "o", "x" },      lhs = "dd",         rhs = "\"_dd" },
 
-    -- Surround text --
-
-    -- Surround with brackets
-    { modes = { "n", "o", "x" },      lhs = "siw)",       rhs = "ciw()<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "saw)",       rhs = "caw()<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "siW)",       rhs = "ciW()<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "saW)",       rhs = "caW()<Esc>P" },
-    { modes = { "v" },                lhs = "s)",         rhs = "c()<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "siw(",       rhs = "ciw()<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "saw(",       rhs = "caw()<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "siW(",       rhs = "ciW()<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "saW(",       rhs = "caW()<Esc>P" },
-    { modes = { "v" },                lhs = "s(",         rhs = "c()<Esc>P" },
-
-    -- Surround with curly braces
-    { modes = { "n", "o", "x" },      lhs = "siw}",       rhs = "ciw{}<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "saw}",       rhs = "caw{}<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "siW}",       rhs = "ciW{}<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "saW}",       rhs = "caW{}<Esc>P" },
-    { modes = { "v" },                lhs = "s}",         rhs = "c{}<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "siw{",       rhs = "ciw{}<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "saw{",       rhs = "caw{}<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "siW{",       rhs = "ciW{}<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "saW{",       rhs = "caW{}<Esc>P" },
-    { modes = { "v" },                lhs = "s{",         rhs = "c{}<Esc>P" },
-
-    -- Surround with square braces
-    { modes = { "n", "o", "x" },      lhs = "siw]",       rhs = "ciw[]<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "saw]",       rhs = "caw[]<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "siW]",       rhs = "ciW[]<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "saW]",       rhs = "caW[]<Esc>P" },
-    { modes = { "v" },                lhs = "s]",         rhs = "c[]<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "siw[",       rhs = "ciw[]<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "saw[",       rhs = "caw[]<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "siW[",       rhs = "ciW[]<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "saW[",       rhs = "caW[]<Esc>P" },
-    { modes = { "v" },                lhs = "s[",         rhs = "c[]<Esc>P" },
-
-    -- Surround with angle brackets
-    { modes = { "n", "o", "x" },      lhs = "siw>",       rhs = "ciw<><Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "saw>",       rhs = "caw<><Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "siW>",       rhs = "ciW<><Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "saW>",       rhs = "caW<><Esc>P" },
-    { modes = { "v" },                lhs = "s>",         rhs = "c<><Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "siw<",       rhs = "ciw<><Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "saw<",       rhs = "caw<><Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "siW<",       rhs = "ciW<><Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "saW<",       rhs = "caW<><Esc>P" },
-    { modes = { "v" },                lhs = "s<",         rhs = "c<><Esc>P" },
-
-    -- Surround with single quotes
-    { modes = { "n", "o", "x" },      lhs = "siw\'",       rhs = "ciw\'\'<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "saw\'",       rhs = "caw\'\'<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "siW\'",       rhs = "ciW\'\'<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "saW\'",       rhs = "caW\'\'<Esc>P" },
-    { modes = { "v" },                lhs = "s\'",         rhs = "c\'\'<Esc>P" },
-
-    -- Surround with double quotes
-    { modes = { "n", "o", "x" },      lhs = "siw\"",       rhs = "ciw\"\"<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "saw\"",       rhs = "caw\"\"<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "siW\"",       rhs = "ciW\"\"<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "saW\"",       rhs = "caW\"\"<Esc>P" },
-    { modes = { "n", "o", "x" },      lhs = "ss\"",        rhs = "cc\"\"<Esc>P" },
-    { modes = { "v" },                lhs = "s\"",         rhs = "c\"\"<Esc>P" },
-
     -- fixes
     { modes = { "n", "o", "x" },      lhs = "ci",         rhs = "\"+ci" },
     { modes = { "n", "o", "x" },      lhs = "cc",         rhs = "\"+cc" },
@@ -134,6 +69,8 @@ local colemak_mappings = {
     { modes = { "n", "o", "x" },      lhs = "va",         rhs = "va" },
     { modes = { "n", "o", "x" },      lhs = "da",         rhs = "\"_da" },
     { modes = { "n", "o", "x" },      lhs = "gd",         rhs = "gd" },
+    { modes = { "n", "o", "x" },      lhs = "i",          rhs = "i" },
+    { modes = { "n", "o", "x" },      lhs = "a",          rhs = "a" },
 
     -- Undo/redo
     { modes = { "n" },                lhs = "l",          rhs = "u" },
@@ -324,6 +261,16 @@ require('pckr').add({
                 }
             })
         end,
+    },
+
+    {
+        "kylechui/nvim-surround",
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end
     },
 
     {
