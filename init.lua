@@ -69,8 +69,8 @@ local colemak_mappings = {
     { modes = { "n", "o", "x" },      lhs = "va",         rhs = "va" },
     { modes = { "n", "o", "x" },      lhs = "da",         rhs = "\"_da" },
     { modes = { "n", "o", "x" },      lhs = "gd",         rhs = "gd" },
-    { modes = { "o", "x" },      lhs = "i",          rhs = "i" },
-    { modes = { "o", "x" },      lhs = "a",          rhs = "a" },
+    { modes = { "o" },      lhs = "i",          rhs = "i" },
+    { modes = { "o" },      lhs = "a",          rhs = "a" },
 
     -- Undo/redo
     { modes = { "n" },                lhs = "l",          rhs = "u" },
