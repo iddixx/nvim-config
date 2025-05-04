@@ -1,5 +1,5 @@
 > [!WARNING]
-> Moved to [there](https://github.com/iddixx/dotfiles/tree/master/nvim)
+> Moved [here](https://github.com/iddixx/dotfiles/tree/master/nvim)
 
 - i use colemak-dh btw, so there is mappings for it
 - package manager: pckr.nvim
